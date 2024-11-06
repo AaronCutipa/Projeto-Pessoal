@@ -18,7 +18,7 @@
             <div id="div_mensagemErro"></div>
 
 <!--<span>Data de nascimento:</span>-->
-        <input type="text" id="input_dtNasc" placeholder="Data de nascimento (DD/MM/AAAA)">
+        <input type="date" id="input_dtNasc" placeholder="Data de nascimento (DD/MM/AAAA)">
             <div id="div_mensagemErro"></div>
 
 <!--<span>E-mail:</span>-->
@@ -26,22 +26,106 @@
             <div id="div_mensagemErro"></div>
 
 <!--<span>Senha:</span>-->
-        <input type="password" id="input_senha" placeholder="Senha"><br>
+        <input type="password" id="input_senha" placeholder="Senha" oninput="senha()"><br>
         <!--<span style="color: gray;">Deve ter de 8 a 24 carácteres alfanuméricos e pelo menos 1 letra</span>-->
-            <div id="div_mensagemErro"></div>
+            <div id="div_alerta"></div>
+            <div id="div_mensagemErroSenha"></div>
 
 <!--<span>Confirmar senha:</span>-->
         <input type="password" id="input_confirmarSenha" placeholder="Confirmar senha">
             <div id="div_mensagemErro"></div>
 
     <button onclick="cadastrar()">Cadastrar</button>
+    <div id="div_mensagem"></div>
     
 </body>
 </html>
 <script>
+    var senhaOriginal = "";
+    function senha(){
+        var senha = input_senha.value;
+        senhaOriginal = senha;
+        var mensagemErroSenha = "";
+        var alerta = "";
+        var tamanho_senha = senha.length;
+
+        if(tamanho_senha < 8 || tamanho_senha > 24){
+        mensagemErroSenha += `De 8 até 24 caracteres<br>`;
+        var ok1 = false;
+        }
+        var carEspeciais = ['!', '@', '#', '$,', '%','^','&','*','(',')',',','.','?',':','{','}','|','<','>','-','"',"'"];
+        if (!(  senha.includes('!') ||
+                senha.includes('@') ||
+                senha.includes('#') ||
+                senha.includes('$') ||
+                senha.includes('%') ||
+                senha.includes('^') ||
+                senha.includes('&') ||
+                senha.includes('*') ||
+                senha.includes('(') ||
+                senha.includes(')') ||
+                senha.includes(',') ||
+                senha.includes('.') ||
+                senha.includes('?') ||
+                senha.includes(':') ||
+                senha.includes('{') ||
+                senha.includes('}') ||
+                senha.includes('|') ||
+                senha.includes('<') ||
+                senha.includes('>') ||
+                senha.includes('-'))
+        ) {
+        mensagemErroSenha += `Caracteres especiais<br>`;
+        var ok2 = false;
+        }
+
+        if(!(   senha.includes('0') ||
+                senha.includes('1') ||
+                senha.includes('2') ||
+                senha.includes('3') ||
+                senha.includes('4') ||
+                senha.includes('5') ||
+                senha.includes('6') ||
+                senha.includes('7') ||
+                senha.includes('8') ||
+                senha.includes('9'))
+        ){
+        mensagemErroSenha += `Pelo menos um número<br>`;
+        var ok3 = false;
+        }
+
+        if (senha == senha.toLowerCase() || senha == senha.toUpperCase()) {
+        mensagemErroSenha += `Letras maiúsculas e minúsculas<br>`;
+        var ok4 = false;
+        }
+
+        if(ok1 == false || ok2 == false || ok3 == false || ok4 == false){
+            alerta = 'Sua senha deve ter:<br>';
+        } else {
+            alerta = "";
+
+        }
+        
+        div_alerta.innerHTML = alerta;
+        div_mensagemErroSenha.innerHTML = mensagemErroSenha;
+    }
+
     function cadastrar(){
+        var nome = input_nome.value;
+        var sobrenome = input_sobrenome.value;
+        var dtNasc = input_dtNasc.value;
+        var email = input_email.value;
+        var senha = input_senha.value;
+        var confirmarSenha = input_confirmarSenha.value;
 
+        var mensagem = "";
 
+        if(nome == 0 || sobrenome == 0 || dtNasc == 0 || email == 0 || senha == 0 || confirmarSenha == 0){
+            mensagem += `<span style="color: red;">Preencha todos os campos!</span>`;
+        } else {
+            mensagem += `<span style="color: green;">Cadastro realizado com sucesso!</span>`;
+        }
 
+        div_mensagem.innerHTML = mensagem;
     }
 </script>
