@@ -1,131 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="cadastro.css">
-</head>
-<body>
-    <h1>Cadastro</h1>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pássaro Celeste</title>
+    <link rel="stylesheet" href="cadastro.css" />
+    <link rel="icon" href="./Fotos/iconPássaro.PNG" type="img/png" />
+  </head>
+  <body onload="listar()">
+    <!--  Header - Inicio  -->
+    <div class="cabecalho">
+      <div class="header">
+        <img
+          src="../Site/Fotos/logoPassarowhite.png"
+          alt="Pásasro Celeste"
+          class="logo"
+          onclick="location.reload();"
+        />
+        <div class="container">
+          <ul class="navbar">
+            <li><a>UNIDADES</a></li>
+            <li><a>HISTÓRIA</a></li>
+            <li><a>CLASSES</a></li>
+            <!--<li><a>COMUNICADOS</a></li>-->
+            <li><a>FALE CONOSCO</a></li>
+            <!--<li><a>ALBUNS</a></li>-->
+          </ul>
+        </div>
+        <div class="img_usuario">
+          <img
+            src="./Fotos/imagem-do-usuario-com-fundo-preto (1).png"
+            alt="Usuario"
+            class="usuario"
+          />
+        </div>
+      </div>
+      <div class="borda"></div>
+    </div>
+    <!--  Header - Fim  -->
+    <!--<div class="login">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+-->
 
-<!--<span>Nome:</span>-->
-        <input type="text" id="input_nome" placeholder="Nome">
-            <div id="div_mensagemErro"></div>
+    <div class="cadastro">
+      <div class="container">
+        <h2>Cadastrar</h2>
+        <div class="formulario">
+          <div class="campo">
+            <span>Nome:</span>
+            <input id="nome_input" type="text" placeholder="Seu nome" />
+          </div>
+          <div class="campo">
+            <span>E-mail:</span>
+            <input
+              id="email_input"
+              type="text"
+              placeholder="meuemail@provedor.com"
+            />
+          </div>
+          <div class="campo">
+            <span>Senha:</span>
+            <input id="senha_input" type="password" placeholder="******" />
+          </div>
+          <div class="campo">
+            <span>Confirmação da Senha:</span>
+            <input
+              id="confirmacao_senha_input"
+              type="password"
+              placeholder="******"
+            />
+          </div>
+          <button class="botao" onclick="cadastrar()">Cadastrar</button>
+        </div>
+        <div id="div_aguardar" class="loading-div">
+          <img src="./assets/circle-loading.gif" id="loading-gif" />
+        </div>
+        <div id="div_erros_login"></div>
+      </div>
+      <div class="imagemEsquerda"></div>
+    </div>
 
-<!--<span>Sobrenome:</span>-->
-        <input type="text" id="input_sobrenome" placeholder="Sobrenome">
-            <div id="div_mensagemErro"></div>
-
-<!--<span>Data de nascimento:</span>-->
-        <input type="date" id="input_dtNasc" placeholder="Data de nascimento (DD/MM/AAAA)">
-            <div id="div_mensagemErro"></div>
-
-<!--<span>E-mail:</span>-->
-        <input type="text" id="input_email" placeholder="E-mail">
-            <div id="div_mensagemErro"></div>
-
-<!--<span>Senha:</span>-->
-        <input type="password" id="input_senha" placeholder="Senha" oninput="senha()"><br>
-        <!--<span style="color: gray;">Deve ter de 8 a 24 carácteres alfanuméricos e pelo menos 1 letra</span>-->
-            <div id="div_alerta"></div>
-            <div id="div_mensagemErroSenha"></div>
-
-<!--<span>Confirmar senha:</span>-->
-        <input type="password" id="input_confirmarSenha" placeholder="Confirmar senha">
-            <div id="div_mensagemErro"></div>
-
-    <button onclick="cadastrar()">Cadastrar</button>
-    <div id="div_mensagem"></div>
-    
-</body>
+    <!--footer inicio
+  <div class="footer">
+    <div class="container">
+      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+      <span class="version">v1.0.0</span>
+    </div>
+  </div>
+  footer fim-->
+  </body>
 </html>
 <script>
-    var senhaOriginal = "";
-    function senha(){
-        var senha = input_senha.value;
-        senhaOriginal = senha;
-        var mensagemErroSenha = "";
-        var alerta = "";
-        var tamanho_senha = senha.length;
+  function cadastrar() {
+    // aguardar();
 
-        if(tamanho_senha < 8 || tamanho_senha > 24){
-        mensagemErroSenha += `De 8 até 24 caracteres<br>`;
-        var ok1 = false;
-        }
-        var carEspeciais = ['!', '@', '#', '$,', '%','^','&','*','(',')',',','.','?',':','{','}','|','<','>','-','"',"'"];
-        if (!(  senha.includes('!') ||
-                senha.includes('@') ||
-                senha.includes('#') ||
-                senha.includes('$') ||
-                senha.includes('%') ||
-                senha.includes('^') ||
-                senha.includes('&') ||
-                senha.includes('*') ||
-                senha.includes('(') ||
-                senha.includes(')') ||
-                senha.includes(',') ||
-                senha.includes('.') ||
-                senha.includes('?') ||
-                senha.includes(':') ||
-                senha.includes('{') ||
-                senha.includes('}') ||
-                senha.includes('|') ||
-                senha.includes('<') ||
-                senha.includes('>') ||
-                senha.includes('-'))
-        ) {
-        mensagemErroSenha += `Caracteres especiais<br>`;
-        var ok2 = false;
-        }
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
-        if(!(   senha.includes('0') ||
-                senha.includes('1') ||
-                senha.includes('2') ||
-                senha.includes('3') ||
-                senha.includes('4') ||
-                senha.includes('5') ||
-                senha.includes('6') ||
-                senha.includes('7') ||
-                senha.includes('8') ||
-                senha.includes('9'))
-        ){
-        mensagemErroSenha += `Pelo menos um número<br>`;
-        var ok3 = false;
-        }
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
 
-        if (senha == senha.toLowerCase() || senha == senha.toUpperCase()) {
-        mensagemErroSenha += `Letras maiúsculas e minúsculas<br>`;
-        var ok4 = false;
-        }
-
-        if(ok1 == false || ok2 == false || ok3 == false || ok4 == false){
-            alerta = 'Sua senha deve ter:<br>';
-        } else {
-            alerta = "";
-
-        }
-        
-        div_alerta.innerHTML = alerta;
-        div_mensagemErroSenha.innerHTML = mensagemErroSenha;
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
     }
 
-    function cadastrar(){
-        var nome = input_nome.value;
-        var sobrenome = input_sobrenome.value;
-        var dtNasc = input_dtNasc.value;
-        var email = input_email.value;
-        var senha = input_senha.value;
-        var confirmarSenha = input_confirmarSenha.value;
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
 
-        var mensagem = "";
+        if (resposta.ok) {
+          cardErro.style.display = "block";
 
-        if(nome == 0 || sobrenome == 0 || dtNasc == 0 || email == 0 || senha == 0 || confirmarSenha == 0){
-            mensagem += `<span style="color: red;">Preencha todos os campos!</span>`;
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
         } else {
-            mensagem += `<span style="color: green;">Cadastro realizado com sucesso!</span>`;
+          throw "Houve um erro ao tentar realizar o cadastro!";
         }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
 
-        div_mensagem.innerHTML = mensagem;
-    }
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
 </script>

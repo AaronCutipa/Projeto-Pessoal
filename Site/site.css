@@ -8,7 +8,7 @@ body {
     background-color: black;
 }
 
-/* header e o texto */
+/* Header - Inicio */
 .header {
     display: flex;
     align-items: center;
@@ -72,6 +72,8 @@ body {
     justify-content: end;
     margin-right: 50px;
 }
+/* Header - Fim */
+
 /* banner */
 .banner {
     background-image: linear-gradient(
