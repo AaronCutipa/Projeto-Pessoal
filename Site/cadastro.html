@@ -9,7 +9,7 @@
     <link rel="icon" href="./Fotos/iconPássaro.PNG" type="img/png" />
   </head>
   <body onload="listar()">
-    <!--  Header - Inicio  -->
+    <!--  Header - Inicio 
     <div class="cabecalho">
       <div class="header">
         <img
@@ -23,9 +23,7 @@
             <li><a>UNIDADES</a></li>
             <li><a>HISTÓRIA</a></li>
             <li><a>CLASSES</a></li>
-            <!--<li><a>COMUNICADOS</a></li>-->
             <li><a>FALE CONOSCO</a></li>
-            <!--<li><a>ALBUNS</a></li>-->
           </ul>
         </div>
         <div class="img_usuario">
@@ -38,7 +36,7 @@
       </div>
       <div class="borda"></div>
     </div>
-    <!--  Header - Fim  -->
+   Header - Fim  -->
     <!--<div class="login">
         <div class="alerta_erro">
             <div class="card_erro" id="cardErro">
@@ -49,31 +47,37 @@
 
     <div class="cadastro">
       <div class="container">
-        <h2>Cadastrar</h2>
+        <div class="img_voltar">
+          <a href="./site.html">
+            <img src="./Fotos/voltar.png" alt="Voltar" class="voltar">
+          </a>
+        </div>
+        <h2>CADASTRAR</h2>
+        <span class="linkLogin"><p>Já tem uma conta?</p><a href="./site.html"><p class="entrar">Entrar.</p></a></span>
         <div class="formulario">
           <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
+            <!-- NOME -->
+            <input id="nome_input" type="text" placeholder="Nome" />
           </div>
           <div class="campo">
-            <span>E-mail:</span>
-            <input
-              id="email_input"
-              type="text"
-              placeholder="meuemail@provedor.com"
-            />
+            <!-- SOBRENOME -->
+            <input id="sobrenome_input" type="text" placeholder="Sobrenome" />
           </div>
           <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
+            <!-- DATA DE NASCIMENTO -->
+            <input id="dtNasc_input" type="text" placeholder="Data de nascimento (DD/MM/AAAA)" />
           </div>
           <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input
-              id="confirmacao_senha_input"
-              type="password"
-              placeholder="******"
-            />
+            <!-- EMAIL -->
+            <input id="email_input" type="text" placeholder="E-mail"/>
+          </div>
+          <div class="campo">
+            <!-- SENHA -->
+            <input id="senha_input" type="password" placeholder="Senha" />
+          </div>
+          <div class="campo">
+            <!-- CONFIRMAR SENHA -->
+            <input id="confirmacao_senha_input" type="password" placeholder="Confirmar senha"/>
           </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
@@ -83,6 +87,9 @@
         <div id="div_erros_login"></div>
       </div>
       <div class="imagemEsquerda"></div>
+      <div class="foto">
+        <img src="./Fotos/capivarinha.jpg" alt="Imagem" class="foto_capivara">
+      </div>
     </div>
 
     <!--footer inicio

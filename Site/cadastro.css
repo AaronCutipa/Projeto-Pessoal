@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-  :root {--gradient-shadow: linear-gradient( 45deg,#000dff, #ff0015,#ff0015,#000dff);}
+  :root {--gradient-shadow: linear-gradient( 45deg,#000dff, #ff0015,#000dff,#ff0015,#000dff);}
   /* :root {--gradient-shadow: linear-gradient( 45deg, #fb0094, #0000ff, #da00ff, #ffaf00, #ac5900, #fb0094, #0000ff, #da00ff, #ffaf00, #ac5900 );} */
 
 body {
@@ -9,7 +9,7 @@ body {
     padding: 0;
     font-family: 'Lato', sans-serif;
 }
-/* Header - Inicio */
+/* Header - Inicio
 .cabecalho {
     display: flex;
     flex-direction: column;
@@ -25,7 +25,6 @@ body {
     color: white;
     padding: 20px 0px;
     text-align: center;
-    /* position: fixed; */
     width: 100%;
 }
 /* Borda -Inicio
@@ -38,8 +37,6 @@ body {
         );
         
 }
- Borda - FIm */
-/* Iluminação do header - Inicio */
 .borda:before, .borda:after {
     display: flex;
     padding: 2px;
@@ -71,7 +68,6 @@ body {
       background-position: 0 0;
     }
   }
-  /* Iluminação do header - Fim */
 
 .container ul {
     list-style-type: none;
@@ -101,7 +97,6 @@ body {
     border-bottom: 2px solid #f21d2f;
 }
 
-/* Logo do header */
 .logo {
     height: 40px;
     width: auto;
@@ -124,22 +119,93 @@ body {
     justify-content: end;
     margin-right: 50px;
 }
-/* Header - Fim */
+Header - Fim */
 .cadastro {
-    display: flex;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.cadastro .foto {
+  display: flex;
+  width: 50%;
+}
+.foto .foto_capivara{
+
+  width: 100%;
 }
 
 .cadastro .container {
-    background-color: black;
-    height: 100%;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 50%;
+  display: flex;
+  background-color: black;
+  height: 100%;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+}
+.container .img_voltar .voltar{
+  width: 50px;
+  display: flex;
+  margin-right: 550px;
+}
+
+
+.container h2{
+  color: White;
+  font-size: 40px;
+  margin: 10px;
+}
+.container .linkLogin{
+  display: flex;
+  color: white;
+}
+.linkLogin .entrar{
+  color: red;
+  margin-left: 5px;
+}
+.linkLogin a {
+  text-decoration: none;
+} 
+.container .formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 350px;
+}
+.campo input{
+  background-color: #242424;
+  border-color: red;
+  border-radius: 8px;
+  width: 300px;
+  height: 30px;
+  font-size: 12px;
+}
+.campo input::placeholder{
+  padding-left: 10px;
+}
+.formulario button {
+  background: linear-gradient(to right,#f21d2f, #3238a6); /*cor do botão*/
+  color: white;
+  font-size: 18x;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 32px;
+}
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none
 }
 
 
