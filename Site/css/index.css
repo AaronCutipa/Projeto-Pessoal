@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+    --gradient-shadow: linear-gradient(45deg, #000dff, #ff0015, #000dff, #ff0015, #000dff);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-padding-top: 80px;
+}
+
+.main-content {
+    padding-top: 80px;
+}
+
+/* Iluminação do header - Inicio */
+.borda:before, .borda:after {
+    display: flex;
+    padding: 2px;
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: var(--gradient-shadow);
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: animate 30s linear infinite;
+}
+
+.borda:after {
+    filter: blur(20px);
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 500% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+/* Iluminação do header - Fim */
+
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: black;
+        color: white;
+        padding: 20px 0px;
+        width: 100%;
+        z-index: 1000;
+
+        .container ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container ul li {
+            margin: 0 15px;
+            font-family: Lato;
+            font-size: 12px;
+        }
+
+        .container ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding-bottom: 1px;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s;
+            cursor: pointer;
+        }
+
+        .container ul li a:hover {
+            border-bottom: 2px solid #f21d2f;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+            margin-left: 60px;
+            cursor: pointer;
+        }
+
+        .usuario {
+            display: flex;
+            justify-content: end;
+            height: 30px;
+            width: auto;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .img_usuario {
+            display: flex;
+            width: 40%;
+            justify-content: end;
+            margin-right: 50px;
+        }
+
+        .img_usuario a {
+            text-decoration: none;
+        }
+    }
+
+}
+
+.banner {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.755) 30%, rgba(0, 174, 209, 0) 70%),
+        url('../assets/imgs/capivara1.jpg');
+    height: calc(100vh - 80px);
+    background-size: cover;
+    background-position: center;
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    .container {
+        text-align: center;
+        padding: 20px;
+        margin-top: 225px;
+    }
+
+    .titulo {
+        font-size: 50px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-weight: bold;
+        background: linear-gradient(to bottom, #f21d2f, #3238a6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .descricao {
+        font-size: 20px;
+        font-weight: 300;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+
+button {
+    background: linear-gradient(to right, #f21d2f, #3238a6);
+    color: white;
+    font-size: 18px;
+    padding: 5px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 180px;
+    height: 37px;
+    margin: 20px;
+}
+
+button:hover {
+    background: linear-gradient(to right, #85151e, #121440);
+}
+
+.historia {
+
+    .container {
+        height: calc(100vh - 80px);
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(0, 212, 255, 0) 40%, rgba(0, 174, 209, 0) 60%, rgba(0, 0, 0, 1) 90%),
+            url('../assets/imgs/capivara4.jpg');
+        background-size: cover;
+        background-position: center;
+
+        .textoHistoria {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            color: white;
+            justify-content: center;
+            align-items: flex-end;
+            margin-right: 50px;
+
+            h1 {
+                font-size: 50px;
+                width: 500px;
+                margin: 0;
+                font-weight: bold;
+                background: linear-gradient(to right, #f21d2f, #3238a6);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            p {
+                width: 500px;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.unidade {
+    height: calc(100vh - 80px);
+    background-color: black;
+    width: 100%;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        .textoUnidade {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            p {
+                color: white;
+                margin-top: 30px;
+                margin-bottom: 0;
+                font-size: 20px;
+            }
+
+            h1 {
+                font-size: 30px;
+                margin-top: 0;
+                margin-bottom: 30px;
+                font-weight: bold;
+                background: linear-gradient(to right, #f21d2f, #3238a6);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+        }
+
+        .container_passaros {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+
+            .passaros {
+                cursor: pointer;
+                border-radius: 5px;
+                height: auto;
+                position: relative;
+                max-width: 250px;
+                overflow: hidden;
+                transition: border 0.6s ease, transform 0.6s ease;
+            }
+
+            .passaros:hover {
+                transform: scale(1.07);
+                border: 1px solid white;
+                
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            .sombrinhaUnidade {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(0deg, rgba(0, 0, 0, 1) 2%, rgba(0, 0, 0, 0.755) 30%, rgba(0, 174, 209, 0) 70%);
+                z-index: 1;
+            }
+
+            .passaroTexto {
+                display: flex;
+                justify-content: space-evenly;
+                flex-direction: column;
+                position: absolute;
+                top: 70%;
+                color: white;
+                text-align: center;
+                z-index: 2;
+            }
+
+            h1 {
+                font-size: 20px;
+                font-weight: bold;
+                margin: 0;
+            }
+
+            span {
+                font-size: 15px;
+                margin: 0;
+            }
+
+
+        }
+
+
+    }
+}
+
+/* FOOTER */
+
+.footer {
+    background: linear-gradient(to right, #f21d2f, #3238a6);
+    height: 100px;
+    color: #fff;
+    display: flex;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        text-align: center;
+
+        h4 {
+            margin: 0;
+        }
+
+        .version {
+            margin-top: 0;
+            font-size: 12px;
+        }
+    }
+
+}

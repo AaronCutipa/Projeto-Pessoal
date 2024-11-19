@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+  --gradient-shadow: linear-gradient(45deg, #000dff, #ff0015, #000dff, #ff0015, #000dff);
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.login {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.foto {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.foto .foto_capivara {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  color: white;
+  width: 50%;
+  padding: 20px;
+}
+
+.container h2 {
+  color: white;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.container .linkLogin {
+    display: flex;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .linkLogin .entrar {
+    color: blue;
+    margin-left: 5px;
+  }
+  
+  .linkLogin a {
+    text-decoration: none;
+  }
+
+.container .formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.campo {
+  margin-bottom: 15px;
+}
+
+.campo input {
+  background-color: #242424;
+  border-color: blue;
+  border-radius: 8px;
+  width: 300px;
+  height: 40px;
+  font-size: 14px;
+  color: white;
+  padding-left: 10px;
+}
+
+.campo input::placeholder {
+  color: #aaa;
+}
+
+.formulario button {
+  background: linear-gradient(to right, #f21d2f, #3238a6);
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 310px;
+  height: 40px;
+}
+
+.formulario button:hover {
+  background: linear-gradient(45deg, #3238a6, #f21d2f);
+  transform: scale(1.03);
+}
+
+.loading-div {
+  width: 50px;
+  display: none;
+  text-align: center;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none;
+}
+.container .img_voltar {
+  position: absolute;
+  top: 20px;
+  margin-left: 550px;
+
+}
+.container .img_voltar .voltar {
+  transform: scale(-1);
+  width: 50px;
+}
