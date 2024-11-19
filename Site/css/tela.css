@@ -1,10 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
+.tela .container .barraLateral {
+    position: relative;
+  }
+  
+  .tela .container .barraLateral::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0; /* Define a borda na direita */
+    height: 100%;
+    width: 5px; /* Largura da borda */
+    background: linear-gradient(180deg,  #ff0015, #000dff); /* Gradiente de cima para baixo */
+    filter: blur(4px); /* Desfoque para o efeito de brilho */
+    animation: bordaBrilhante 3s infinite linear;
+  }
+  
+  @keyframes bordaBrilhante {
+    0% {
+      background-position: 0 -200%;
+    }
+    100% {
+      background-position: 0 200%;
+    }
+  }
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    scroll-padding-top: 80px;
     font-family: 'Lato', sans-serif;
 }
 
@@ -12,35 +36,38 @@ html, body {
     scroll-behavior: smooth;
 }
 
+
 .tela {
     width: 100%;
     height: 100vh;
-    background-color: black;
 
     .container {
         display: flex;
 
         .barraLateral {
+            background-color: black;
             width: 25%;
-            height: 100vh;
+            min-height: 100vh;
             background-color: black;
             display: flex;
             flex-direction: column;
             align-items: center;
+
 
             .sair {
                 margin-top: 20px;
                 width: 90%;
                 height: 50px;
                 cursor: pointer;
-                
+
                 img {
                     width: 50px;
                     height: auto;
                     transition: all 0.3s ease;
+
                     &:hover {
                         transform: scale(1.07);
-                      }
+                    }
                 }
             }
 
@@ -109,7 +136,7 @@ html, body {
                         background: linear-gradient(45deg, #3238a6, #f21d2f);
                         transform: scale(1.03);
                         border: 1px solid white;
-                      }
+                    }
 
 
                     a {
@@ -124,48 +151,14 @@ html, body {
 
             }
 
-
-
-            /* .btn-nav-white {
-                width: 40%;
-                background-color: white;
-                border: 3px solid #e6005a;
-                border-radius: 5px;
-                text-align: center;
-                padding: 2% 5%;
-
-                h3 {
-                    color: #e6005a;
-                    padding: 0;
-                    margin: 0;
-                }
-            } */
-
-
-            /* .btn-nav h3,
-            .btn-logout h3 {
-                margin: 0;
-                padding: 0;
-            } */
-            /* 
-            .btn-logout {
-                margin: 0;
-                padding: 0;
-                width: 20%;
-                background-color: #32b9cd;
-                color: white;
-                border-radius: 10px;
-                text-align: center;
-                padding: 10px 15px;
-                margin-bottom: 100px;
-                cursor: pointer;
-            } */
         }
+
 
         .telaEsquerda {
             width: 75%;
-            height: 100vh;
-            background-color: blue;
+            min-height: 100vh;
+            background-color: rgb(69, 69, 69);
+
         }
     }
 }

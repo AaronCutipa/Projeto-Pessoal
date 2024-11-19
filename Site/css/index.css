@@ -3,6 +3,19 @@
 :root {
     --gradient-shadow: linear-gradient(45deg, #000dff, #ff0015, #000dff, #ff0015, #000dff);
 }
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 500% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
 
 html, body {
     height: 100%;
@@ -36,19 +49,7 @@ html, body {
     filter: blur(20px);
 }
 
-@keyframes animate {
-    0% {
-        background-position: 0 0;
-    }
 
-    50% {
-        background-position: 500% 0;
-    }
-
-    100% {
-        background-position: 0 0;
-    }
-}
 /* Iluminação do header - Fim */
 
 * {
@@ -107,6 +108,11 @@ html, body {
             width: auto;
             margin-left: 60px;
             cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: scale(1.07);
+            }
         }
 
         .usuario {
@@ -127,6 +133,11 @@ html, body {
 
         .img_usuario a {
             text-decoration: none;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: scale(1.07);
+            }
         }
     }
 
@@ -182,11 +193,14 @@ button {
     width: 180px;
     height: 37px;
     margin: 20px;
+    transition: all 1s ease;
+
+    &:hover {
+        transform: scale(1.07);
+        background: linear-gradient(45deg, #3238a6, #f21d2f);
+    }
 }
 
-button:hover {
-    background: linear-gradient(to right, #85151e, #121440);
-}
 
 .historia {
 
@@ -280,7 +294,7 @@ button:hover {
             .passaros:hover {
                 transform: scale(1.07);
                 border: 1px solid white;
-                
+
             }
 
             img {
