@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-padding-top: 80px;
+    font-family: 'Lato', sans-serif;
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+.tela {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+
+    .container {
+        display: flex;
+
+        .barraLateral {
+            width: 25%;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .sair {
+                margin-top: 20px;
+                width: 90%;
+                height: 50px;
+                cursor: pointer;
+                
+                img {
+                    width: 50px;
+                    height: auto;
+                    transition: all 0.3s ease;
+                    &:hover {
+                        transform: scale(1.07);
+                      }
+                }
+            }
+
+            .titulo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                height: 150px;
+                margin-top: 20px;
+
+                .logoCeleste {
+                    display: flex;
+                    align-items: center;
+                    width: 300px;
+                    height: 50%;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+
+                .hello {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+
+                    h3 {
+                        color: white;
+                        font-weight: 300;
+                        font-size: 1.2rem;
+
+                        span {
+                            font-weight: 800;
+                        }
+                    }
+                }
+            }
+
+            .botoes {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 200px;
+                height: 300px;
+                margin-top: 50px;
+
+
+                .botao {
+                    width: 100%;
+                    height: 50px;
+                    color: white;
+                    background: linear-gradient(to right, #f21d2f, #3238a6);
+                    border-radius: 5px;
+                    text-align: center;
+                    border-radius: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        background: linear-gradient(45deg, #3238a6, #f21d2f);
+                        transform: scale(1.03);
+                        border: 1px solid white;
+                      }
+
+
+                    a {
+                        text-decoration: none;
+                        color: white;
+
+                        h3 {
+                            font-size: 15px;
+                        }
+                    }
+                }
+
+            }
+
+
+
+            /* .btn-nav-white {
+                width: 40%;
+                background-color: white;
+                border: 3px solid #e6005a;
+                border-radius: 5px;
+                text-align: center;
+                padding: 2% 5%;
+
+                h3 {
+                    color: #e6005a;
+                    padding: 0;
+                    margin: 0;
+                }
+            } */
+
+
+            /* .btn-nav h3,
+            .btn-logout h3 {
+                margin: 0;
+                padding: 0;
+            } */
+            /* 
+            .btn-logout {
+                margin: 0;
+                padding: 0;
+                width: 20%;
+                background-color: #32b9cd;
+                color: white;
+                border-radius: 10px;
+                text-align: center;
+                padding: 10px 15px;
+                margin-bottom: 100px;
+                cursor: pointer;
+            } */
+        }
+
+        .telaEsquerda {
+            width: 75%;
+            height: 100vh;
+            background-color: blue;
+        }
+    }
+}

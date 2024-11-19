@@ -9,6 +9,7 @@ html, body {
     margin: 0;
     padding: 0;
     scroll-padding-top: 80px;
+    font-family: 'Lato', sans-serif;
 }
 
 .main-content {
@@ -54,11 +55,6 @@ html, body {
     scroll-behavior: smooth;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Lato', sans-serif;
-}
 
 .cabecalho {
     display: flex;
