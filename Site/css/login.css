@@ -50,20 +50,21 @@ body {
   font-size: 40px;
   margin-bottom: 20px;
 }
+
 .container .linkLogin {
-    display: flex;
-    color: white;
-    margin-bottom: 20px;
-  }
-  
-  .linkLogin .entrar {
-    color: blue;
-    margin-left: 5px;
-  }
-  
-  .linkLogin a {
-    text-decoration: none;
-  }
+  display: flex;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.linkLogin .entrar {
+  color: blue;
+  margin-left: 5px;
+}
+
+.linkLogin a {
+  text-decoration: none;
+}
 
 .container .formulario {
   display: flex;
@@ -82,7 +83,7 @@ body {
   border-color: blue;
   border-radius: 8px;
   width: 300px;
-  height: 40px;
+  height: 30px;
   font-size: 14px;
   color: white;
   padding-left: 10px;
@@ -109,6 +110,12 @@ body {
   transform: scale(1.03);
 }
 
+.formulario button:disabled {
+  background: linear-gradient(45deg, #1e203e, #542327);
+  cursor: not-allowed;
+  color: #aaa;
+}
+
 .loading-div {
   width: 50px;
   display: none;
@@ -123,13 +130,29 @@ body {
 #div_erros_login {
   display: none;
 }
+
 .container .img_voltar {
   position: absolute;
   top: 20px;
   margin-left: 550px;
+  transform: scale(-1);
 
 }
+
 .container .img_voltar .voltar {
-  transform: scale(-1);
   width: 50px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.07);
+  }
+}
+
+.mensagemErro {
+  color: red;
+  font-size: 12px;
+  width: 300px;
+  white-space: normal;
+  word-wrap: break-word;
+  margin-bottom: 0;
 }
