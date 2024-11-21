@@ -77,6 +77,10 @@ VALUES
   ('Falcão'),
   ('Beija-flor'),
   ('Albatroz');
+  
+  UPDATE membro SET fkUnidade = 2 WHERE idMembro = 4;
+  
+  SELECT * FROM membro WHERE idMembro = 4;
 
 INSERT INTO classes(nomeClasse)
 VALUES
@@ -177,6 +181,16 @@ LEFT JOIN classes AS cl
 	ON mc.fkClasse = cl.idClasses
 ORDER BY m.idMembro ASC;
 
+SELECT
+	m.idMembro AS ID,
+    m.nome AS Nome,
+    m.sobrenome AS Sobrenome,
+    m.dataNasc AS 'Data de Nascimento',
+    m.sexo AS 'Sexo',
+    m.email AS 'E-mail',
+    m.senha AS Senha
+FROM membro AS m;
+
 
 -- Total de membros
 SELECT COUNT(*) AS 'Total de Membros'
@@ -227,7 +241,7 @@ FROM membro
 GROUP BY sexo;
 
 
-    
+
     
 
 /*INSERT INTO membro(nome, sobrenome, dataNasc, email, senha)
