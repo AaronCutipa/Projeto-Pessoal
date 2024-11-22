@@ -16,11 +16,11 @@ router.post("/defUnidade", function (requisicao, resposta){
     // chamando a function do controller
 });
 
-router.post("/deCargo", function (requisicao, resposta){
+router.post("/defCargo", function (requisicao, resposta){
     unidadeController.defCargo(requisicao, resposta);
 });
 
-router.post("/deClasse", function (requisicao, resposta){
+router.post("/defClasse", function (requisicao, resposta){
     unidadeController.defClasse(requisicao, resposta);
 });
 

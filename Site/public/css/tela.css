@@ -169,7 +169,7 @@ html, body {
             .formulario {
                 border-radius: 30px;
                 width: 500px;
-                height: 400px;
+                height: 300px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;

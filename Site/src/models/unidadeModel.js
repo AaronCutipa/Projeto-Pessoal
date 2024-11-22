@@ -9,9 +9,7 @@ function listar() {
 }
 
 function cadastrar(nome) {
-    var instrucao = `
-        INSERT INTO carro (nome) VALUES ('${nome}');
-    `;
+    var instrucao = ` INSERT INTO carro (nome) VALUES ('${nome}');`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
