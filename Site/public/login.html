@@ -86,10 +86,8 @@
             console.log(JSON.stringify(json));
 
             // Armazenar os dados de login na sessionStorage
-            sessionStorage.EMAIL_USUARIO = json.email;
-            sessionStorage.NOME_USUARIO = json.nome;
-            sessionStorage.ID_USUARIO = json.id;
-            sessionStorage.AQUARIOS = JSON.stringify(json.aquarios);
+            sessionStorage.NOME_USUARIO = json[0].nome;
+            sessionStorage.ID_USUARIO = json[0].idMembro;
 
             // Redirecionar para a página do dashboard após 1 segundo
             setTimeout(function () {

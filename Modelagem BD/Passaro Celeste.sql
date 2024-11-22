@@ -10,6 +10,24 @@ CREATE TABLE unidade (
     qtdMembros INT
 );
 
+-- Tabela cargo
+CREATE TABLE cargo (
+    idCargo INT PRIMARY KEY AUTO_INCREMENT,
+    nomeCargo VARCHAR(45),
+		CONSTRAINT chkNomeCargo 
+		CHECK (nomeCargo IN ('Desbravador', 'Conselheiro', 'Instrutor', 'Capelão', 'Diretor Associado(a)', 'Diretor'))
+);
+
+
+-- Tabela classes
+CREATE TABLE classes (
+    idClasse INT PRIMARY KEY AUTO_INCREMENT,
+    nomeClasse VARCHAR(45),
+		CONSTRAINT chkNomeClasse 
+        CHECK (nomeClasse IN ('Amigo', 'Companheiro', 'Pesquisador', 'Pioneiro', 'Excursionista', 'Guia')),
+    qtdMembros INT
+);
+
 -- Tabela membro
 CREATE TABLE membro (
     idMembro INT PRIMARY KEY AUTO_INCREMENT,
@@ -22,45 +40,19 @@ CREATE TABLE membro (
     email VARCHAR(100) NOT NULL,
     senha VARCHAR(100) NOT NULL,
     fkUnidade INT,
-		CONSTRAINT fkUnidade
+		CONSTRAINT fkMembroUnidade
 		FOREIGN KEY (fkUnidade)
-		REFERENCES unidade(idUnidade)
-);
-
--- Tabela cargo
-CREATE TABLE cargo (
-    idCargo INT PRIMARY KEY AUTO_INCREMENT,
-    nomeCargo VARCHAR(45),
-		CONSTRAINT chkNomeCargo 
-		CHECK (nomeCargo IN ('Desbravador', 'Conselheiro', 'Instrutor', 'Capelão', 'Diretor Associado(a)', 'Diretor')),
-    fkMembro INT,
-		CONSTRAINT fkMembroCargo 
-		FOREIGN KEY (fkMembro) 
-		REFERENCES membro(idMembro)
-);
-
--- Tabela classes
-CREATE TABLE classes (
-    idClasses INT PRIMARY KEY AUTO_INCREMENT,
-    nomeClasse VARCHAR(45),
-		CONSTRAINT chkNomeClasse 
-        CHECK (nomeClasse IN ('Amigo', 'Companheiro', 'Pesquisador', 'Pioneiro', 'Excursionista', 'Guia')),
-    qtdMembros INT
-);
-
--- Tabela membroClasse
-CREATE TABLE membroClasse (
-    fkMembro INT,
-		CONSTRAINT fkMembroClasse 
-		FOREIGN KEY (fkMembro) 
-		REFERENCES membro(idMembro),
-    fkClasse INT,
-		CONSTRAINT fkClasseMembro 
+		REFERENCES unidade(idUnidade),
+	fkCargo INT,
+        CONSTRAINT fkMembroCargo 
+        FOREIGN KEY (fkCargo) 
+        REFERENCES cargo(idCargo),
+	fkClasse INT,
+        CONSTRAINT fkMembroClasse
         FOREIGN KEY (fkClasse) 
-        REFERENCES classes(idClasses),
-    dataInicio DATE,
-    dataTermino DATE
+        REFERENCES classes(idClasse)
 );
+
 
 -- Tabela faleConosco
 CREATE TABLE faleConosco (
@@ -78,9 +70,17 @@ VALUES
   ('Beija-flor'),
   ('Albatroz');
   
-  UPDATE membro SET fkUnidade = 2 WHERE idMembro = 4;
   
-  SELECT * FROM membro WHERE idMembro = 4;
+  INSERT INTO cargo (nomeCargo)
+VALUES
+	('Desbravador'),
+	('Instrutor'),
+    ('Capelão'),
+    ('Conselheiro'),
+	('Diretor Associado(a)'),
+    ('Diretor');
+    
+    
 
 INSERT INTO classes(nomeClasse)
 VALUES
@@ -109,54 +109,19 @@ VALUES
   ('Alexandre', 'Soares', '1984-12-08', 'alexandre.soares@email.com', 'senha107', 0);
   
   -- insert membros Desbravadores
-INSERT INTO membro (nome, sobrenome, dataNasc, email, senha, sexo, fkUnidade)
+INSERT INTO membro (nome, sobrenome, dataNasc, email, senha, sexo, fkUnidade, fkClasse)
 VALUES
-  ('João', 'Silva', '2008-04-01', 'joao.silva@email.com', 'senha110', 0, 2),
-  ('Lucas', 'Oliveira', '2007-06-14', 'lucas.oliveira@email.com', 'senha111', 0, 2),
-  ('Gabriel', 'Pereira', '2006-08-27', 'gabriel.pereira@email.com', 'senha112', 0, 4),
-  ('Fernanda', 'Alves', '2006-11-05', 'fernanda.alves@email.com', 'senha113', 1, 1),
-  ('Roberta', 'Gomes', '2005-03-13', 'roberta.gomes@email.com', 'senha114', 1, 3),
-  ('Pedro', 'Santos', '2004-02-20', 'pedro.santos@email.com', 'senha115', 0, 4),
-  ('Gisele', 'Costa', '2003-09-16', 'gisele.costa@email.com', 'senha116', 1, 1),
-  ('Cláudia', 'Lima', '2003-07-28', 'claudia.lima@email.com', 'senha117', 1, 3);
+  ('João', 'Silva', '2008-04-01', 'joao.silva@email.com', 'senha110', 0, 2, 5),
+  ('Lucas', 'Oliveira', '2007-06-14', 'lucas.oliveira@email.com', 'senha111', 0, 2, 1),
+  ('Gabriel', 'Pereira', '2006-08-27', 'gabriel.pereira@email.com', 'senha112', 0, 4, 3),
+  ('Fernanda', 'Alves', '2006-11-05', 'fernanda.alves@email.com', 'senha113', 1, 1, 6),
+  ('Roberta', 'Gomes', '2005-03-13', 'roberta.gomes@email.com', 'senha114', 1, 3, 3),
+  ('Pedro', 'Santos', '2004-02-20', 'pedro.santos@email.com', 'senha115', 0, 4, 2),
+  ('Gisele', 'Costa', '2003-09-16', 'gisele.costa@email.com', 'senha116', 1, 1, 1),
+  ('Cláudia', 'Lima', '2003-07-28', 'claudia.lima@email.com', 'senha117', 1, 3, 2);
 
+    
 
-
-
-INSERT INTO cargo (nomeCargo, fkMembro)
-VALUES
-    ('Diretor', 1),
-    ('Diretor Associado(a)', 2),
-    ('Diretor Associado(a)', 3),
-    ('Conselheiro', 4),
-    ('Conselheiro', 5),
-    ('Conselheiro', 6),
-    ('Conselheiro', 7),
-    ('Conselheiro', 8),
-    ('Conselheiro', 9),
-    ('Conselheiro', 10),
-    ('Conselheiro', 11),
-    ('Capelão', 12),
-    ('Desbravador', 13),
-    ('Desbravador', 14),
-    ('Desbravador', 15),
-    ('Desbravador', 16),
-    ('Desbravador', 17),
-    ('Desbravador', 18),
-    ('Desbravador', 19),
-    ('Desbravador', 20);
-
-
-INSERT INTO membroClasse (fkMembro, fkClasse, dataInicio, dataTermino)
-VALUES
-    (13, 5, '2024-01-01', '2024-11-01'),
-    (14, 1, '2024-01-01', '2024-11-01'),
-    (15, 3, '2024-01-01', '2024-11-01'),
-    (16, 6, '2024-01-01', NULL),
-    (17, 2, '2024-01-01', NULL),
-    (18, 1, '2024-01-01', NULL),
-    (19, 2, '2024-01-01', NULL),
-    (20, 3, '2024-01-01', NULL);
     
 SELECT
 	m.idMembro AS ID,
@@ -167,18 +132,14 @@ SELECT
     m.senha AS Senha,
     c.nomeCargo AS Cargo,
     u.nomeUnidade AS Unidade,
-    mc.dataInicio AS 'Início da Classe',
-    mc.dataTermino AS 'Termino',
 	cl.nomeClasse AS Classe
 FROM membro AS m
 JOIN cargo AS c
-	ON m.idMembro = c.fkMembro
+	ON m.fkCargo = c.idCargo
 JOIN unidade AS u
 	ON m.fkUnidade = u.idUnidade
-LEFT JOIN membroClasse AS mc
-	ON mc.fkMembro = m.idMembro
-LEFT JOIN classes AS cl
-	ON mc.fkClasse = cl.idClasses
+RIGHT JOIN classes AS cl
+	ON m.fkClasse = cl.idClasse
 ORDER BY m.idMembro ASC;
 
 SELECT
@@ -240,11 +201,6 @@ SELECT
 FROM membro
 GROUP BY sexo;
 
+SELECT * FROM membro;
 
-
-    
-
-/*INSERT INTO membro(nome, sobrenome, dataNasc, email, senha)
-VALUES
-	('Aaron', 'Cutipa', '2005-02-01', 'aacc6720@gmail.com', '18171401Jfma!');*/
     

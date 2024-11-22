@@ -11,9 +11,17 @@ router.get("/listar", function (req, res) {
     unidadeController.listar(req, res);
 });
 
-router.get("/defUnidade", function (req, res)){
-    unidadeController.listar(req, res);
+router.post("/defUnidade", function (requisicao, resposta){
+    unidadeController.defUnidade(requisicao, resposta);
+    // chamando a function do controller
+});
 
-}
+router.post("/deCargo", function (requisicao, resposta){
+    unidadeController.defCargo(requisicao, resposta);
+});
+
+router.post("/deClasse", function (requisicao, resposta){
+    unidadeController.defClasse(requisicao, resposta);
+});
 
 module.exports = router;

@@ -59,16 +59,13 @@
                 <div class="formulario">
                     <h1>Formulário</h1>
                     <div class="formulario">
-                        <div class="campo">
-                            <input id="email_input" type="text" placeholder="E-mail" oninput="verificarEmail()" />
-                            <div class="mensagemErro" id="div_ErroEmail"></div>
                             <div class="campo">
                                 <select id="unidade_slt">
                                     <option value="#" disabled selected>Unidade</option>
-                                    <option value="Arara-Azul">Arara-azul</option>
-                                    <option value="Falcão">Falcão</option>
-                                    <option value="Beija-flor">Beija-flor</option>
-                                    <option value="Albatroz">Albatroz</option>
+                                    <option value=1>Arara-azul</option>
+                                    <option value=2>Falcão</option>
+                                    <option value=3>Beija-flor</option>
+                                    <option value=4>Albatroz</option>
                                     <option value="NULL">Sem unidade</option>
                                 </select>
                                 <div class="mensagemErro" id="div_ErroGenero"></div>
@@ -76,24 +73,26 @@
                             <div class="campo">
                                 <select id="cargo_slt">
                                     <option value="#" disabled selected>Cargo</option>
-                                    <option value="Desbravador">Desbravador</option>
-                                    <option value="Conselheiro">Conselheiro</option>
-                                    <option value="Instrutor">Instrutor</option>
-                                    <option value="Capelão">Capelão</option>
-                                    <option value="Diretor Associado(a)">Diretor Associado</option>
-                                    <option value="Diretor">Diretor</option>
+                                    <option value=1>Desbravador</option>
+                                    <option value=2>Conselheiro</option>
+                                    <option value=3>Instrutor</option>
+                                    <option value=4>Capelão</option>
+                                    <option value=5>Diretor Associado</option>
+                                    <option value=6>Diretor</option>
+                                    <option value="NULL">Sem Cargo</option>
                                 </select>
                                 <div class="mensagemErro" id="div_ErroGenero"></div>
                             </div>
                             <div class="campo">
-                                <select id="classes_slt">
-                                    <option value="#" disabled selected>Classes</option>
-                                    <option value="Amigo">Amigo</option>
-                                    <option value="Companheiro">Companheiro</option>
-                                    <option value="Pesquisador">Pesquisador</option>
-                                    <option value="Pioneiro">Pioneiro</option>
-                                    <option value="Excursionista">Excursionista</option>
-                                    <option value="Guia">Guia</option>
+                                <select id="classe_slt">
+                                    <option value="#" disabled selected>Classe</option>
+                                    <option value=1>Amigo</option>
+                                    <option value=2>Companheiro</option>
+                                    <option value=3>Pesquisador</option>
+                                    <option value=4>Pioneiro</option>
+                                    <option value=5>Excursionista</option>
+                                    <option value=6>Guia</option>
+                                    <option value="NULL">Agrupadas</option>
                                 </select>
                                 <div class="mensagemErro" id="div_ErroGenero"></div>
                             </div>
@@ -112,65 +111,108 @@
         var email = email_input.value;
         var unidade = unidade_slt.value;
         var cargo = cargo_slt.value;
-        var classe = classes_slt.value;
+        var classe = classe_slt.value;
 
 
         var unidadeVar = '';
         if (unidade === '' || cargo === '' || classe === '') {
-            alert("Por favor, selecione seu unidade.");
+            alert("Por favor, preencha todos os campos!");
             return;
         } else {
+            // primeiro parametro é a rota que queremos enviar
+            // aqui fazemos a requisição
+            fetch("/unidade/defUnidade", {
+                // metodo
+                method:"POST",
+                // 
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idMembro: sessionStorage.getItem("ID_USUARIO"),
+                    idUnidade: unidade
+                })
+            })
 
-
-
-        }
-
-
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                sobrenomeServer: sobrenomeVar,
-                dtNascServer: dtNascVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    cardErro.style.display = "block";
-
-                    mensagem_erro.innerHTML =
-                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000");
-
-                    limparFormulario();
-                    finalizarAguardar();
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
+            .then((resposta) => {
+                console.log(resposta)
+                if(resposta.status == 200) {
+                    atualizarCargo()
+                } else if(resposta.status == 500) {
+                    alert("ERRO NO SERVIDOR!")
+                } else if (resposta.status == 400) {
+                    alert("Alguma coisa está vazio!")
                 }
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
-            });
+            .catch(erro => {
+                console.log(erro)
+            })
 
-        return false;
-
-
-        function sumirMensagem() {
-            cardErro.style.display = "none";
         }
+
+        
+    }
+    function atualizarCargo() {
+        var cargo = cargo_slt.value;
+
+        fetch("/unidade/defCargo", {
+                // metodo
+                method:"POST",
+                // 
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idMembro: sessionStorage.getItem("ID_USUARIO"),
+                    idCargo: cargo
+                })
+            })
+
+            .then((resposta) => {
+                console.log(resposta)
+                if(resposta.status == 200) {
+                    atualizarClasse()
+                } else if(resposta.status == 500) {
+                    alert("ERRO NO SERVIDOR!")
+                } else if (resposta.status == 400) {
+                    alert("Alguma coisa está vazio!")
+                }
+            })
+            .catch(erro => {
+                console.log(erro)
+            })
+
+    }
+
+    function atualizarClasse(){
+        var classe = classe_slt.value;
+
+        fetch("/unidade/defClasse", {
+                // metodo
+                method:"POST",
+                // 
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idMembro: sessionStorage.getItem("ID_USUARIO"),
+                    idClasse: classe
+                })
+            })
+
+            .then((resposta) => {
+                console.log(resposta)
+                if(resposta.status == 200) {
+                    alert("Atualização deu certo!")
+                } else if(resposta.status == 500) {
+                    alert("ERRO NO SERVIDOR!")
+                } else if (resposta.status == 400) {
+                    alert("Alguma coisa está vazio!")
+                }
+            })
+            .catch(erro => {
+                console.log(erro)
+            })
 
     }
 

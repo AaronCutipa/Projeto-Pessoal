@@ -16,13 +16,26 @@ function cadastrar(nome) {
     return database.executar(instrucao);
 }
 
-function defUnidade() {
+function defUnidade(unidade, idMembro) {
     var instrucaoSql = ` UPDATE membro SET fkUnidade = '${unidade}' WHERE idMembro = ${idMembro};`;
     return database.executar(instrucaoSql);
 }
 
+function defCargo(cargo, idMembro) {
+    var instrucaoSql = ` UPDATE membro SET fkCargo = '${cargo}' WHERE idMembro = ${idMembro};`;
+    return database.executar(instrucaoSql);
+}
+
+function defClasse(classe, idMembro) {
+    var instrucaoSql = ` UPDATE membro SET fkClasse = '${classe}' WHERE idMembro = ${idMembro};`;
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     cadastrar,
     listar,
-    defUnidade
+    defUnidade,
+    defCargo,
+    defClasse
 };
