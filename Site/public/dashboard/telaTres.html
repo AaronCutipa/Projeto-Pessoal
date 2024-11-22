@@ -1,112 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mural</title>
-        <link rel="shortcut icon" href="../assets/icon/iconPássaro.PNG"
-            type="image/x-icon">
-        <link rel="stylesheet" href="./../css/tela.css" />
-        <link rel="stylesheet" href="./../css/dashboards.css">
-        <script src="../js/sessao.js"></script>
-        <script src="./../js/alerta.js"></script>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-            rel="stylesheet">
-    </head>
-    <body onload="validarSessao(), atualizarFeed()"
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mural</title>
+    <link rel="shortcut icon" href="../assets/icon/iconPássaro.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="./../css/tela.css" />
+    <link rel="stylesheet" href="./../css/dashboards.css">
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<body onload="validarSessao(), atualizarFeed()"
         style="background-color: #161618;">
         <div class="tela">
-            <div class="container">
-                <!-- Barra Lateral -->
-                <div class="barraLateral">
-                    <div class="sair" onclick="limparSessao()">
-                        <a href>
-                            <img src="../assets/icon/sair.png" alt="Sair">
-                        </a>
-                    </div>
-                    <div class="titulo">
-                        <div class="logoCeleste">
-                            <img
-                                src="../assets/icon/logoPassaroCeleste cópia.png"
-                                alt>
-                        </div>
-                        <div class="hello">
-                            <h3>Olá, <span
-                                    id="b_usuario">usuário</span>!</h3>
-                        </div>
-                    </div>
-                    <div class="botoes">
-                        <div class="botao">
-                            <a href="./telaUm.html">
-                                <h3>Formulário</h3>
-                            </a>
-                        </div>
-                        <div class="botao">
-                            <a href="./teladois.html">
-                                <h3>Gráficos</h3>
-                            </a>
-                        </div>
-                        <div class="botao">
-                            <a href="./telaTres.html">
-                                <h3>Mural de Avisos</h3>
-                            </a>
-                        </div>
-                    </div>
+
+<!-- <body> -->
+    <div class="container">
+        <!-- Barra Lateral -->
+        <div class="barraLateral">
+            <div class="sair" onclick="limparSessao()">
+                <a href>
+                    <img src="../assets/icon/sair.png" alt="Sair">
+                </a>
+            </div>
+            <div class="titulo">
+                <div class="logoCeleste">
+                    <img src="../assets/icon/logoPassaroCeleste cópia.png" alt>
                 </div>
-                <!-- FIM - Barra Lateral -->
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                </div>
+            </div>
+            <div class="botoes">
+                <div class="botao">
+                    <a href="./telaUm.html">
+                        <h3>Formulário</h3>
+                    </a>
+                </div>
+                <div class="botao">
+                    <a href="./teladois.html">
+                        <h3>Gráficos</h3>
+                    </a>
+                </div>
+                <div class="botao">
+                    <a href="./telaTres.html">
+                        <h3>Mural de Avisos</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- FIM - Barra Lateral -->
 
-                <div class="telaEsquerda">
-                    <div class="dash-right">
+        <div class="telaEsquerda">
+            <div class="dash-right">
 
-                        <div class="avisos">
-                            <div id="alerta">
-                            </div>
-                            <div class="container">
-                                <h1>Publicar um aviso</h1>
-                                <div class="div-form">
-                                    <form id="form_postagem" method="post"
-                                        onsubmit="return publicar()">
-                                        <label>
-                                            Título:
-                                            <br>
-                                            <input name="titulo" id="titulo"
-                                                maxlength="100" type="text">
-                                        </label>
-                                        <br>
-                                        <br>
-                                        <label>
-                                            Descrição (máximo de 250
-                                            caracteres):
-                                            <br>
-                                            <textarea name="descricao"
-                                                id="textarea_descricao"
-                                                maxlength="250"
-                                                rows="5"></textarea>
-                                        </label>
-                                        <br>
-                                        <br>
-                                        <button>Enviar</button>
-                                    </form>
-                                </div>
-                                <h1>Mural de Avisos</h1>
-                                <div class="div-results">
-                                    <div id="feed_container"
-                                        class="feed-container">
-                                    </div>
-                                </div>
+                <div class="avisos">
+                    <div id="alerta">
+                    </div>
+                    <div class="container">
+                        <h1>Publicar um aviso</h1>
+                        <div class="div-form">
+                            <form id="form_postagem" method="post" onsubmit="return publicar()">
+                                <label>
+                                    Título:
+                                    <br>
+                                    <input name="titulo" id="titulo" maxlength="100" type="text">
+                                </label>
+                                <br>
+                                <br>
+                                <label>
+                                    Descrição (máximo de 250
+                                    caracteres):
+                                    <br>
+                                    <textarea name="descricao" id="textarea_descricao" maxlength="250"
+                                        rows="5"></textarea>
+                                </label>
+                                <br>
+                                <br>
+                                <button>Enviar</button>
+                            </form>
+                        </div>
+                        <h1>Mural de Avisos</h1>
+                        <div class="div-results">
+                            <div id="feed_container" class="feed-container">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+    </div>
+</body>
+
 </html>
 
 <script>
-    
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function limparFormulario() {

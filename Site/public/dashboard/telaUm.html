@@ -59,50 +59,50 @@
                 <div class="formulario">
                     <h1>Formulário</h1>
                     <div class="formulario">
-                            <div class="campo">
-                                <select id="unidade_slt">
-                                    <option value="#" disabled selected>Unidade</option>
-                                    <option value=1>Arara-azul</option>
-                                    <option value=2>Falcão</option>
-                                    <option value=3>Beija-flor</option>
-                                    <option value=4>Albatroz</option>
-                                    <option value="NULL">Sem unidade</option>
-                                </select>
-                                <div class="mensagemErro" id="div_ErroGenero"></div>
-                            </div>
-                            <div class="campo">
-                                <select id="cargo_slt">
-                                    <option value="#" disabled selected>Cargo</option>
-                                    <option value=1>Desbravador</option>
-                                    <option value=2>Conselheiro</option>
-                                    <option value=3>Instrutor</option>
-                                    <option value=4>Capelão</option>
-                                    <option value=5>Diretor Associado</option>
-                                    <option value=6>Diretor</option>
-                                    <option value="NULL">Sem Cargo</option>
-                                </select>
-                                <div class="mensagemErro" id="div_ErroGenero"></div>
-                            </div>
-                            <div class="campo">
-                                <select id="classe_slt">
-                                    <option value="#" disabled selected>Classe</option>
-                                    <option value=1>Amigo</option>
-                                    <option value=2>Companheiro</option>
-                                    <option value=3>Pesquisador</option>
-                                    <option value=4>Pioneiro</option>
-                                    <option value=5>Excursionista</option>
-                                    <option value=6>Guia</option>
-                                    <option value="NULL">Agrupadas</option>
-                                </select>
-                                <div class="mensagemErro" id="div_ErroGenero"></div>
-                            </div>
-                            <button class="botao" onclick="enviar()" id="id_Enviar">Enviar</button>
+                        <div class="campo">
+                            <select id="unidade_slt">
+                                <option value="#" disabled selected>Unidade</option>
+                                <option value=1>Arara-azul</option>
+                                <option value=2>Falcão</option>
+                                <option value=3>Beija-flor</option>
+                                <option value=4>Albatroz</option>
+                                <option value="NULL">Sem unidade</option>
+                            </select>
+                            <div class="mensagemErro" id="div_ErroGenero"></div>
                         </div>
+                        <div class="campo">
+                            <select id="cargo_slt">
+                                <option value="#" disabled selected>Cargo</option>
+                                <option value=1>Desbravador</option>
+                                <option value=2>Conselheiro</option>
+                                <option value=3>Instrutor</option>
+                                <option value=4>Capelão</option>
+                                <option value=5>Diretor Associado</option>
+                                <option value=6>Diretor</option>
+                                <option value="NULL">Sem Cargo</option>
+                            </select>
+                            <div class="mensagemErro" id="div_ErroGenero"></div>
+                        </div>
+                        <div class="campo">
+                            <select id="classe_slt">
+                                <option value="#" disabled selected>Classe</option>
+                                <option value=1>Amigo</option>
+                                <option value=2>Companheiro</option>
+                                <option value=3>Pesquisador</option>
+                                <option value=4>Pioneiro</option>
+                                <option value=5>Excursionista</option>
+                                <option value=6>Guia</option>
+                                <option value="NULL">Agrupadas</option>
+                            </select>
+                            <div class="mensagemErro" id="div_ErroGenero"></div>
+                        </div>
+                        <button class="botao" onclick="enviar()" id="id_Enviar">Enviar</button>
                     </div>
                 </div>
-                <div class="fundo"></div>
             </div>
+            <div class="fundo"></div>
         </div>
+    </div>
 </body>
 
 </html>
@@ -125,7 +125,7 @@
             // aqui fazemos a requisição
             fetch("/unidade/defUnidade", {
                 // metodo
-                method:"POST",
+                method: "POST",
                 // 
                 headers: {
                     "Content-Type": "application/json"
@@ -136,45 +136,45 @@
                 })
             })
 
-            .then((resposta) => {
-                console.log(resposta)
-                if(resposta.status == 200) {
-                    atualizarCargo()
-                } else if(resposta.status == 500) {
-                    alert("ERRO NO SERVIDOR!")
-                } else if (resposta.status == 400) {
-                    alert("Alguma coisa está vazio!")
-                }
-            })
-            .catch(erro => {
-                console.log(erro)
-            })
+                .then((resposta) => {
+                    console.log(resposta)
+                    if (resposta.status == 200) {
+                        atualizarCargo()
+                    } else if (resposta.status == 500) {
+                        alert("ERRO NO SERVIDOR!")
+                    } else if (resposta.status == 400) {
+                        alert("Alguma coisa está vazio!")
+                    }
+                })
+                .catch(erro => {
+                    console.log(erro)
+                })
 
         }
 
-        
+
     }
     function atualizarCargo() {
         var cargo = cargo_slt.value;
 
         fetch("/unidade/defCargo", {
-                // metodo
-                method:"POST",
-                // 
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    idMembro: sessionStorage.getItem("ID_USUARIO"),
-                    idCargo: cargo
-                })
+            // metodo
+            method: "POST",
+            // 
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idMembro: sessionStorage.getItem("ID_USUARIO"),
+                idCargo: cargo
             })
+        })
 
             .then((resposta) => {
                 console.log(resposta)
-                if(resposta.status == 200) {
+                if (resposta.status == 200) {
                     atualizarClasse()
-                } else if(resposta.status == 500) {
+                } else if (resposta.status == 500) {
                     alert("ERRO NO SERVIDOR!")
                 } else if (resposta.status == 400) {
                     alert("Alguma coisa está vazio!")
@@ -186,27 +186,27 @@
 
     }
 
-    function atualizarClasse(){
+    function atualizarClasse() {
         var classe = classe_slt.value;
 
         fetch("/unidade/defClasse", {
-                // metodo
-                method:"POST",
-                // 
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    idMembro: sessionStorage.getItem("ID_USUARIO"),
-                    idClasse: classe
-                })
+            // metodo
+            method: "POST",
+            // 
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idMembro: sessionStorage.getItem("ID_USUARIO"),
+                idClasse: classe
             })
+        })
 
             .then((resposta) => {
                 console.log(resposta)
-                if(resposta.status == 200) {
+                if (resposta.status == 200) {
                     alert("Atualização deu certo!")
-                } else if(resposta.status == 500) {
+                } else if (resposta.status == 500) {
                     alert("ERRO NO SERVIDOR!")
                 } else if (resposta.status == 400) {
                     alert("Alguma coisa está vazio!")

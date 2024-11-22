@@ -75,37 +75,37 @@
           senhaServer: senhaVar,
         }),
       })
-      .then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!");
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
 
-        if (resposta.ok) {
-          console.log(resposta);
+          if (resposta.ok) {
+            console.log(resposta);
 
-          resposta.json().then((json) => {
-            console.log(json);
-            console.log(JSON.stringify(json));
+            resposta.json().then((json) => {
+              console.log(json);
+              console.log(JSON.stringify(json));
 
-            // Armazenar os dados de login na sessionStorage
-            sessionStorage.NOME_USUARIO = json[0].nome;
-            sessionStorage.ID_USUARIO = json[0].idMembro;
+              // Armazenar os dados de login na sessionStorage
+              sessionStorage.NOME_USUARIO = json[0].nome;
+              sessionStorage.ID_USUARIO = json[0].idMembro;
 
-            // Redirecionar para a página do dashboard após 1 segundo
-            setTimeout(function () {
-              window.location = "./dashboard/telaUm.html";
-            }, 1000); // apenas para exibir o loading
-          });
-        } else {
-          console.log("Houve um erro ao tentar realizar o login!");
+              // Redirecionar para a página do dashboard após 1 segundo
+              setTimeout(function () {
+                window.location = "./dashboard/telaUm.html";
+              }, 1000); // apenas para exibir o loading
+            });
+          } else {
+            console.log("Houve um erro ao tentar realizar o login!");
 
-          resposta.text().then((texto) => {
-            console.error(texto);
-            finalizarAguardar(texto); // Função para exibir erro
-          });
-        }
-      })
-      .catch(function (erro) {
-        console.log(erro);
-      });
+            resposta.text().then((texto) => {
+              console.error(texto);
+              finalizarAguardar(texto); // Função para exibir erro
+            });
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
 
       return false;
     }
