@@ -110,11 +110,6 @@ body {
   transform: scale(1.03);
 }
 
-.formulario button:disabled {
-  background: linear-gradient(45deg, #1e203e, #542327);
-  cursor: not-allowed;
-  color: #aaa;
-}
 
 .loading-div {
   width: 50px;
@@ -146,13 +141,4 @@ body {
   &:hover {
     transform: scale(1.07);
   }
-}
-
-.mensagemErro {
-  color: red;
-  font-size: 12px;
-  width: 300px;
-  white-space: normal;
-  word-wrap: break-word;
-  margin-bottom: 0;
 }

@@ -2,28 +2,29 @@
 
 .tela .container .barraLateral {
     position: relative;
-  }
-  
-  .tela .container .barraLateral::after {
+}
+
+.tela .container .barraLateral::after {
     content: '';
     position: absolute;
     top: 0;
-    right: 0; /* Define a borda na direita */
+    right: 0;
     height: 100%;
-    width: 5px; /* Largura da borda */
-    background: linear-gradient(180deg,  #ff0015, #000dff); /* Gradiente de cima para baixo */
-    filter: blur(4px); /* Desfoque para o efeito de brilho */
+    width: 5px;
+    background: linear-gradient(180deg, #ff0015, #000dff);
+    filter: blur(4px);
     animation: bordaBrilhante 3s infinite linear;
-  }
-  
-  @keyframes bordaBrilhante {
+}
+
+@keyframes bordaBrilhante {
     0% {
-      background-position: 0 -200%;
+        background-position: 0 -200%;
     }
+
     100% {
-      background-position: 0 200%;
+        background-position: 0 200%;
     }
-  }
+}
 
 html, body {
     height: 100%;
@@ -52,6 +53,7 @@ html, body {
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: fixed;
 
 
             .sair {
@@ -157,7 +159,90 @@ html, body {
         .telaEsquerda {
             width: 75%;
             min-height: 100vh;
-            background-color: rgb(69, 69, 69);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 25vw;
+            background-image: url('../assets/imgs/capivara3.jpg');
+            background-size: cover;
+
+            .formulario {
+                border-radius: 30px;
+                width: 500px;
+                height: 400px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+
+                .fundo {
+                    width: 100px;
+                    display: flex;
+                    background-size: cover;
+                    background-color: black;
+                }
+
+                h1 {
+                    margin-top: 20px;
+                    font-size: 50px;
+                    color: white;
+                    text-align: center;
+                }
+
+                .campo {
+                    margin-top: 10px;
+
+                    input {
+                        background-color: #242424;
+                        border-color: red;
+                        border-radius: 8px;
+                        width: 300px;
+                        height: 30px;
+                        font-size: 14px;
+                        padding-left: 10px;
+                        color: #aaa;
+
+                    }
+
+                    select {
+                        background-color: #242424;
+                        border-color: red;
+                        border-radius: 8px;
+                        width: 314px;
+                        height: 35px;
+                        font-size: 14px;
+                        color: white;
+                        padding-left: 10px;
+                        color: #aaa;
+
+                    }
+                }
+
+                button {
+                    background: linear-gradient(to right, #f21d2f, #3238a6);
+                    color: white;
+                    font-size: 18px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    width: 310px;
+                    height: 40px;
+                    margin-top: 10px;
+
+                    &:hover {
+                        background: linear-gradient(45deg, #3238a6, #f21d2f);
+                        transform: scale(1.03);
+                    }
+
+                    &:disabled {
+                        background: linear-gradient(45deg, #1e203e, #542327);
+                        cursor: not-allowed;
+                        color: #aaa;
+                    }
+                }
+
+            }
 
         }
     }

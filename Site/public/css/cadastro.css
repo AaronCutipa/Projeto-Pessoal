@@ -113,11 +113,22 @@ body {
   background: linear-gradient(45deg, #3238a6, #f21d2f);
   transform: scale(1.03);
 }
-
-.formulario button:disabled {
-  background: linear-gradient(45deg, #1e203e, #542327);
-  cursor: not-allowed;
-  color: #aaa;
+.campo select {
+  background-color: #242424;
+  border-color: red;
+  border-radius: 8px;
+  width: 317px;
+  height: 35px;
+  font-size: 14px;
+  color: white;
+  padding-left: 10px;
+  appearance: none;
+  cursor: pointer;
+}
+.campo input:focus,
+.campo select:focus {
+  outline: none;
+  border-color: blue;
 }
 
 .loading-div {

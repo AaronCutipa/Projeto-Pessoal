@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="shortcut icon" href="../assets/icon/iconPássaro.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="../css/tela.css">
+    <link rel="stylesheet" href="./../css/dashboards.css">
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- <body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()"> -->
+    <div class="tela">
+        <div class="container">
+            <!-- Barra Lateral -->
+            <div class="barraLateral">
+                <div class="sair" onclick="limparSessao()">
+                    <a href>
+                        <img src="../assets/icon/sair.png" alt="Sair">
+                    </a>
+                </div>
+                <div class="titulo">
+                    <div class="logoCeleste">
+                        <img src="../assets/icon/logoPassaroCeleste cópia.png" alt>
+                    </div>
+                    <div class="hello">
+                        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                    </div>
+                </div>
+                <div class="botoes">
+                    <div class="botao">
+                        <a href="./telaUm.html">
+                            <h3>Formulário</h3>
+                        </a>
+                    </div>
+                    <div class="botao">
+                        <a href="./teladois.html">
+                            <h3>Gráficos</h3>
+                        </a>
+                    </div>
+                    <div class="botao">
+                        <a href="./telaTres.html">
+                            <h3>Mural de Avisos</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM - Barra Lateral -->
+
+            <div class="telaEsquerda">
+                <div class="formulario">
+                    <h1>Formulário</h1>
+                    <div class="formulario">
+                        <div class="campo">
+                            <input id="email_input" type="text" placeholder="E-mail" oninput="verificarEmail()" />
+                            <div class="mensagemErro" id="div_ErroEmail"></div>
+                            <div class="campo">
+                                <select id="unidade_slt">
+                                    <option value="#" disabled selected>Unidade</option>
+                                    <option value="Arara-Azul">Arara-azul</option>
+                                    <option value="Falcão">Falcão</option>
+                                    <option value="Beija-flor">Beija-flor</option>
+                                    <option value="Albatroz">Albatroz</option>
+                                    <option value="NULL">Sem unidade</option>
+                                </select>
+                                <div class="mensagemErro" id="div_ErroGenero"></div>
+                            </div>
+                            <div class="campo">
+                                <select id="cargo_slt">
+                                    <option value="#" disabled selected>Cargo</option>
+                                    <option value="Desbravador">Desbravador</option>
+                                    <option value="Conselheiro">Conselheiro</option>
+                                    <option value="Instrutor">Instrutor</option>
+                                    <option value="Capelão">Capelão</option>
+                                    <option value="Diretor Associado(a)">Diretor Associado</option>
+                                    <option value="Diretor">Diretor</option>
+                                </select>
+                                <div class="mensagemErro" id="div_ErroGenero"></div>
+                            </div>
+                            <div class="campo">
+                                <select id="classes_slt">
+                                    <option value="#" disabled selected>Classes</option>
+                                    <option value="Amigo">Amigo</option>
+                                    <option value="Companheiro">Companheiro</option>
+                                    <option value="Pesquisador">Pesquisador</option>
+                                    <option value="Pioneiro">Pioneiro</option>
+                                    <option value="Excursionista">Excursionista</option>
+                                    <option value="Guia">Guia</option>
+                                </select>
+                                <div class="mensagemErro" id="div_ErroGenero"></div>
+                            </div>
+                            <button class="botao" onclick="enviar()" id="id_Enviar">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="fundo"></div>
+            </div>
+        </div>
+</body>
+
+</html>
+<script>
+    function enviar() {
+        var email = email_input.value;
+        var unidade = unidade_slt.value;
+        var cargo = cargo_slt.value;
+        var classe = classes_slt.value;
+
+
+        var unidadeVar = '';
+        if (unidade === '' || cargo === '' || classe === '') {
+            alert("Por favor, selecione seu unidade.");
+            return;
+        } else {
+
+
+
+        }
+
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                sobrenomeServer: sobrenomeVar,
+                dtNascServer: dtNascVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    mensagem_erro.innerHTML =
+                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+        return false;
+
+
+        function sumirMensagem() {
+            cardErro.style.display = "none";
+        }
+
+    }
+
+</script>
