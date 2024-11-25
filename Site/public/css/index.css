@@ -3,6 +3,7 @@
 :root {
     --gradient-shadow: linear-gradient(45deg, #000dff, #ff0015, #000dff, #ff0015, #000dff);
 }
+
 @keyframes animate {
     0% {
         background-position: 0 0;
@@ -16,6 +17,7 @@
         background-position: 0 0;
     }
 }
+
 
 html, body {
     height: 100%;
@@ -145,7 +147,7 @@ html, body {
 
 .banner {
     background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.755) 30%, rgba(0, 174, 209, 0) 70%),
-        url('../assets/imgs/capivara1.jpg');
+        url('../assets/imgs/fotos/foto\ \(9\).jpg');
     height: calc(100vh - 80px);
     background-size: cover;
     background-position: center;
@@ -210,7 +212,7 @@ button {
         flex-direction: row-reverse;
         width: 100%;
         background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(0, 212, 255, 0) 40%, rgba(0, 174, 209, 0) 60%, rgba(0, 0, 0, 1) 90%),
-            url('../assets/imgs/capivara4.jpg');
+            url('../assets/imgs/fotos/foto\ \(15\).jpg');
         background-size: cover;
         background-position: center;
 
@@ -235,6 +237,7 @@ button {
             }
 
             p {
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
                 width: 500px;
                 font-size: 20px;
             }
@@ -261,7 +264,7 @@ button {
                 color: white;
                 margin-top: 30px;
                 margin-bottom: 0;
-                font-size: 20px;
+                font-size: 25px;
             }
 
             h1 {
@@ -315,24 +318,27 @@ button {
             .passaroTexto {
                 display: flex;
                 justify-content: space-evenly;
+                align-items: center;
                 flex-direction: column;
                 position: absolute;
                 top: 70%;
-                color: white;
                 text-align: center;
+                color: white;
                 z-index: 2;
+                width: 100%;
+
+                h1 {
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin: 0;
+                }
+
+                p {
+                    font-size: 20px;
+                    margin: 0;
+                }
             }
 
-            h1 {
-                font-size: 20px;
-                font-weight: bold;
-                margin: 0;
-            }
-
-            span {
-                font-size: 15px;
-                margin: 0;
-            }
 
 
         }
