@@ -19,126 +19,111 @@ body {
   display: flex;
   width: 100%;
   height: 100%;
-}
 
-.foto {
-  display: flex;
-  width: 50%;
-  justify-content: center;
-  align-items: center;
-}
+  .foto {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
 
-.foto .foto_capivara {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .foto_clube {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #000;
-  color: white;
-  width: 50%;
-  padding: 20px;
-}
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: white;
+    width: 50%;
+    padding: 20px;
 
-.container h2 {
-  color: white;
-  font-size: 40px;
-  margin-bottom: 20px;
-}
+    .img_voltar {
+      position: absolute;
+      top: 20px;
+      margin-left: 550px;
+      transform: scale(-1);
 
-.container .linkLogin {
-  display: flex;
-  color: white;
-  margin-bottom: 20px;
-}
+      .voltar {
+        width: 50px;
+        transition: all 0.3s ease;
 
-.linkLogin .entrar {
-  color: blue;
-  margin-left: 5px;
-}
+        &:hover {
+          transform: scale(1.07);
+        }
+      }
 
-.linkLogin a {
-  text-decoration: none;
-}
+    }
 
-.container .formulario {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
+    h2 {
+      color: white;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
 
-.campo {
-  margin-bottom: 15px;
-}
+    .linkLogin {
+      display: flex;
+      color: white;
+      margin-bottom: 20px;
 
-.campo input {
-  background-color: #242424;
-  border-color: blue;
-  border-radius: 8px;
-  width: 300px;
-  height: 30px;
-  font-size: 14px;
-  color: white;
-  padding-left: 10px;
-}
+      .entrar {
+        color: blue;
+        margin-left: 5px;
+      }
 
-.campo input::placeholder {
-  color: #aaa;
-}
+      a {
+        text-decoration: none;
+      }
+    }
 
-.formulario button {
-  background: linear-gradient(to right, #f21d2f, #3238a6);
-  color: white;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 310px;
-  height: 40px;
-}
+    .formulario {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
 
-.formulario button:hover {
-  background: linear-gradient(45deg, #3238a6, #f21d2f);
-  transform: scale(1.03);
-}
+      .campo {
+        margin-bottom: 15px;
 
+        input {
+          background-color: #242424;
+          border-color: blue;
+          border-radius: 8px;
+          width: 300px;
+          height: 30px;
+          font-size: 14px;
+          color: white;
+          padding-left: 10px;
 
-.loading-div {
-  width: 50px;
-  display: none;
-  text-align: center;
-}
+          &::placeholder {
+            color: #aaa;
+          }
+        }
+      }
 
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}
+      button {
+        background: linear-gradient(to right, #f21d2f, #3238a6);
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 310px;
+        height: 40px;
 
-#div_erros_login {
-  display: none;
-}
+        &:hover {
+          background: linear-gradient(45deg, #3238a6, #f21d2f);
+          transform: scale(1.03);
+        }
+      }
 
-.container .img_voltar {
-  position: absolute;
-  top: 20px;
-  margin-left: 550px;
-  transform: scale(-1);
-
-}
-
-.container .img_voltar .voltar {
-  width: 50px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: scale(1.07);
+    }
   }
 }

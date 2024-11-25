@@ -25,14 +25,15 @@
           <img src="assets/icon/voltar.png" alt="Voltar" class="voltar">
         </a>
       </div>
-      <div class="div_gradiente"></div>
-      <h2>CADASTRAR</h2>
-      <span class="linkLogin">
-        <p>Já tem uma conta?</p>
-        <a href="login.html">
-          <p class="entrar">Entrar.</p>
-        </a>
-      </span>
+      <div class="titulo">
+        <h2>CADASTRAR</h2>
+        <span class="linkLogin">
+          <p>Já tem uma conta?</p>
+          <a href="login.html">
+            <p class="entrar">Entrar.</p>
+          </a>
+        </span>
+      </div>
       <div class="formulario">
         <div class="campo">
           <input id="nome_input" type="text" placeholder="Nome" oninput="verificarNome()" />
@@ -55,7 +56,6 @@
           </select>
           <div class="mensagemErro" id="div_ErroSexo"></div>
         </div>
-
         <div class="campo">
           <input id="email_input" type="text" placeholder="E-mail" oninput="verificarEmail()" />
           <div class="mensagemErro" id="div_ErroEmail"></div>
@@ -71,22 +71,23 @@
         </div>
         <button class="botao" onclick="cadastrar()">Cadastrar</button>
       </div>
-      <div id="div_aguardar" class="loading-div">
+      <!-- <div id="div_aguardar" class="loading-div">
         <img src="./assets/circle-loading.gif" id="loading-gif" />
       </div>
-      <div id="div_erros_login"></div>
+      <div id="div_erros_login"></div> -->
     </div>
-    <div class="imagemEsquerda"></div>
     <div class="foto">
-      <img src="assets/imgs/fotos/foto (7).jpg" alt="Imagem" class="foto_capivara">
+      <img src="assets/imgs/fotos/foto (7).jpg" alt="Imagem" class="foto_clube">
     </div>
   </div>
 </body>
 
 </html>
 <script>
+  // Armazena a senha inserida para comparação
   var senhaOriginal = "";
 
+  // Validação do nome
   function verificarNome() {
     var nomeVar = nome_input.value;
     var erroNome = "";
@@ -98,6 +99,7 @@
     div_ErroNome.innerHTML = erroNome;
   }
 
+  // Validação do sobrenome
   function verificarSobrenome() {
     var sobrenomeVar = sobrenome_input.value;
     var erroSobrenome = "";
@@ -109,7 +111,7 @@
     }
     div_ErroSobrenome.innerHTML = erroSobrenome;
   }
-
+  // Validação da data
   function verificarData() {
     var dataVar = dtNasc_input.value;
     var erroData = "";
@@ -127,6 +129,7 @@
     div_ErroData.innerHTML = erroData;
   }
 
+  // Validação do sexo
   function verificarSexo() {
     var sexo = sexo_input.value;
 
@@ -137,6 +140,7 @@
     }
   }
 
+  // Validação do email
   function verificarEmail() {
     var emailVar = email_input.value;
     var erroEmail = "";
@@ -148,14 +152,17 @@
     div_ErroEmail.innerHTML = erroEmail;
   }
 
+  // Validação da senha
   function verificarSenha() {
     var senhaVar = senha_input.value;
     senhaOriginal = senhaVar;
     var erroSenha = "";
 
+    // Caracteres especiais armazenados em vetor
     var caracteresEspeciais = ['!', '@', '#', '$', '%', '&', '*', '-', '_', '+', '=', '|', '/', ':', ';'];
     var especialSenha = false;
 
+    // Validação de caracateres especiais
     for (var i = 0; i < caracteresEspeciais.length; i++) {
       if (senhaVar.includes(caracteresEspeciais[i])) {
         especialSenha = true;
@@ -163,9 +170,11 @@
       }
     }
 
+    // Números armazenados em vetor
     var numerosSenha = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     var especialNumeros = false;
 
+    // Validação de números
     for (var i = 0; i < numerosSenha.length; i++) {
       if (senhaVar.includes(numerosSenha[i])) {
         especialNumeros = true;
@@ -173,9 +182,11 @@
       }
     }
 
+    // Converte o texto em minuscula e maiuscula para comparação
     var minusculaSenha = senhaVar.toLowerCase();
     var maiusculaSenha = senhaVar.toUpperCase();
 
+    // Verifica quantidade de caracteres, e verifica se contem pelo menos 1 numero, caracter especial, maiuscula e minuscula.
     if (senhaVar.length < 8) {
       erroSenha = "A senha deve ter 8 ou mais caracteres";
     } else if (!especialNumeros) {
@@ -191,10 +202,12 @@
     div_ErroSenha.innerHTML = erroSenha;
   }
 
+  // Validação de confirmar senha
   function verificarConSenha() {
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var erroConSenha = "";
 
+    // Vaerifica se o campo esta preenchido e compara a senha original
     if (confirmacaoSenhaVar == '') {
       erroConSenha = "Confirme a sua senha";
     } else if (senhaOriginal !== confirmacaoSenhaVar) {
@@ -203,6 +216,7 @@
     div_ErroConSenha.innerHTML = erroConSenha;
   }
 
+  // Validação do botão cadastrar
   function cadastrar() {
     var nomeVar = nome_input.value;
     var sobrenomeVar = sobrenome_input.value;
@@ -261,7 +275,7 @@
 
           setTimeout(() => {
             window.location = "login.html";
-          }, 2000); // apenas para exibir o loading
+          }, 2000);
 
           limparFormulario();
           finalizarAguardar();

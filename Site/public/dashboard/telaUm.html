@@ -106,6 +106,7 @@
 
 </html>
 <script>
+    // Puxa o nome do usuario conectado armazenado no sessionStorage
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 
@@ -114,7 +115,7 @@
         var cargo = cargo_slt.value;
         var classe = classe_slt.value;
 
-
+        // Validação de campos preenchidos
         var unidadeVar = '';
         if (unidade === '' || cargo === '' || classe === '') {
             alert("Por favor, preencha todos os campos!");
@@ -134,7 +135,7 @@
                     idUnidade: unidade
                 })
             })
-
+            // Aqui ele pega a resposta e exibe alerts referente a erros e se caso passar chama a funtion atualizar cargo
                 .then((resposta) => {
                     console.log(resposta)
                     if (resposta.status == 200) {
@@ -148,18 +149,15 @@
                 .catch(erro => {
                     console.log(erro)
                 })
-
         }
-
-
     }
+    //  Ele repete o mesmo aqui e chama a function atualizar Classe
     function atualizarCargo() {
         var cargo = cargo_slt.value;
 
         fetch("/unidade/defCargo", {
             // metodo
             method: "POST",
-            // 
             headers: {
                 "Content-Type": "application/json"
             },
@@ -182,16 +180,15 @@
             .catch(erro => {
                 console.log(erro)
             })
-
     }
 
+    //  Por fim ele chama a ultima function atualizarClasse e exibe o alert que deu Certo
     function atualizarClasse() {
         var classe = classe_slt.value;
 
         fetch("/unidade/defClasse", {
             // metodo
             method: "POST",
-            // 
             headers: {
                 "Content-Type": "application/json"
             },

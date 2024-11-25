@@ -30,6 +30,116 @@ body {
     color: white;
     width: 50%;
     padding: 20px;
+
+    .img_voltar .voltar {
+      width: 50px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.07);
+      }
+    }
+
+    .titulo {
+      h2 {
+        color: white;
+        font-size: 40px;
+        margin-bottom: 0;
+      }
+
+      .linkLogin {
+        display: flex;
+        color: white;
+        margin-bottom: 10px;
+        justify-content: center;
+
+        .entrar {
+          color: red;
+          margin-left: 5px;
+        }
+
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .formulario {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      .campo {
+        margin-bottom: 15px;
+
+        input {
+          background-color: #242424;
+          border-color: red;
+          border-radius: 8px;
+          width: 300px;
+          height: 30px;
+          font-size: 14px;
+          color: white;
+          padding-left: 10px;
+
+          &::placeholder {
+            color: #aaa;
+          }
+        }
+
+        select {
+          background-color: #242424;
+          border-color: red;
+          border-radius: 8px;
+          width: 317px;
+          height: 35px;
+          font-size: 14px;
+          color: white;
+          padding-left: 10px;
+          appearance: none;
+          cursor: pointer;
+        }
+
+        input:focus,
+        select:focus {
+          outline: none;
+          border-color: blue;
+        }
+
+        .mensagemErro {
+          color: red;
+          font-size: 12px;
+          width: 300px;
+          white-space: normal;
+          word-wrap: break-word;
+          margin-bottom: 0;
+        }
+      }
+
+      button {
+        background: linear-gradient(to right, #f21d2f, #3238a6);
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 310px;
+        height: 40px;
+
+        &:hover {
+          background: linear-gradient(45deg, #3238a6, #f21d2f);
+          transform: scale(1.03);
+        }
+      }
+    }
+
+
   }
 }
 
@@ -38,131 +148,11 @@ body {
   width: 50%;
   justify-content: center;
   align-items: center;
-}
 
-.foto .foto_capivara {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-
-.container h2 {
-  color: white;
-  font-size: 40px;
-  margin-bottom: 0;
-}
-
-.container .linkLogin {
-  display: flex;
-  color: white;
-  margin-bottom: 10px;
-}
-
-.linkLogin .entrar {
-  color: red;
-  margin-left: 5px;
-}
-
-.linkLogin a {
-  text-decoration: none;
-}
-
-.container .formulario {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.campo {
-  margin-bottom: 15px;
-}
-
-.campo input {
-  background-color: #242424;
-  border-color: red;
-  border-radius: 8px;
-  width: 300px;
-  height: 30px;
-  font-size: 14px;
-  color: white;
-  padding-left: 10px;
-}
-
-.campo input::placeholder {
-  color: #aaa;
-}
-
-
-.formulario button {
-  background: linear-gradient(to right, #f21d2f, #3238a6);
-  color: white;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 310px;
-  height: 40px;
-}
-
-.formulario button:hover {
-  background: linear-gradient(45deg, #3238a6, #f21d2f);
-  transform: scale(1.03);
-}
-.campo select {
-  background-color: #242424;
-  border-color: red;
-  border-radius: 8px;
-  width: 317px;
-  height: 35px;
-  font-size: 14px;
-  color: white;
-  padding-left: 10px;
-  appearance: none;
-  cursor: pointer;
-}
-.campo input:focus,
-.campo select:focus {
-  outline: none;
-  border-color: blue;
-}
-
-.loading-div {
-  width: 50px;
-  display: none;
-  text-align: center;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}
-
-#div_erros_login {
-  display: none;
-}
-
-.container .img_voltar .voltar {
-  width: 50px;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: scale(1.07);
+  .foto_clube {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-}
 
-.mensagemErro {
-  color: red;
-  font-size: 12px;
-  width: 300px;
-  white-space: normal;
-  word-wrap: break-word;
-  margin-bottom: 0;
 }

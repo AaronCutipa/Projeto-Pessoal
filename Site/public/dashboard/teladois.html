@@ -50,13 +50,31 @@
             </div>
             <!-- FIM - Barra Lateral -->
             <div class="telaEsquerda">
-                <div class="grafico">
-                    <div class="grafico-container" id="grafico-pizza">
-                        <canvas id="pie-chart" width="400" height="400"></canvas>
+                <div class="tela">
+                    <div class="kpis">
+                        <h1>DASHBOARD</h1>
+                        <div class="bloquinhos">
+                            <div class="parteUm">
+                                <span>Descrição</span>
+                                <h1>KPI 1</h1>
+                            </div>
+                            <div class="parteDois">
+                                <span>Descrição</span>
+                                <h1>KPI 2</h1>
+                            </div>
+                            <div class="parteTres">
+                                <span>Descrição</span>
+                                <h1>KPI 3</h1>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="grafico-container" id="grafico-barras">
-                        <canvas id="bar-chart" width="400" height="400"></canvas>
+                    <div class="grafico">
+                        <div class="grafico-container" id="grafico-pizza">
+                            <canvas id="pie-chart"></canvas>
+                        </div>
+                        <div class="grafico-container" id="grafico-barras">
+                            <canvas id="bar-chart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,6 +87,23 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+    function obterdados() {
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Cores: Vermelho: #FF6384; Roxo: #9966FF; Azul: #36A2EB; Laranja: #FF9F40; Verde: #4BC0C0; Amarelo: #FFCD56; Cinza: #C9CBCF
     const dataPizza = {
         labels: ['Desbravadores', 'Instrutores', 'Conselheiros', 'Capelão', 'Diretores Associados', 'Diretor'],
@@ -76,15 +111,13 @@
             label: 'Membros',
             data: [16, 4, 8, 1, 2, 1],
             backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
+                '#FF6384',
+                '#36A2EB',
+                '#4BC0C0',
+                '#C9CBCF',
+                '#9966FF',
+                '#FFCD56',
+                '#FF9F40'
             ],
             hoverOffset: 4
         }]
@@ -104,16 +137,23 @@
             label: 'Membros fazendo',
             data: [9, 5, 7, 3, 5, 2],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)'
+                // Cores: Vermelho: #FF6384; Roxo: #9966FF; Azul: #36A2EB; Laranja: #FF9F40; Verde: #4BC0C0; Amarelo: #FFCD56; Cinza: #C9CBCF
+                '#FF6384',
+                '#36A2EB',
+                '#4BC0C0',
+                '#C9CBCF',
+                '#9966FF',
+                '#FFCD56',
+                '#FF9F40'
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
+                '#FF6384',
+                '#36A2EB',
+                '#4BC0C0',
+                '#C9CBCF',
+                '#9966FF',
+                '#FFCD56',
+                '#FF9F40'
             ],
             borderWidth: 1
         }]
