@@ -1,9 +1,14 @@
 var database = require("../database/config")
 
-function listar() {
+function graficoCargo() {
     var instrucao = `
-        SELECT * FROM unidade;
-    `;
+    SELECT
+    c.nomeCargo AS Cargo,
+    COUNT(m.idMembro) AS 'Quantidade de Membros'
+    FROM cargo c
+    LEFT JOIN membro m ON c.idCargo = m.fkCargo
+    GROUP BY c.idCargo;
+    ;`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -35,5 +40,6 @@ module.exports = {
     listar,
     defUnidade,
     defCargo,
-    defClasse
+    defClasse,
+    graficoCargo
 };

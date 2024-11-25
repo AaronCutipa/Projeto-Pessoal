@@ -7,8 +7,8 @@ router.post("/cadastrar", function (req, res) {
     unidadeController.cadastrar(req, res);
 });
 
-router.get("/listar", function (req, res) {
-    unidadeController.listar(req, res);
+router.get("/graficoCargo", function (requisicao, resposta) {
+    unidadeController.graficoCargo(requisicao, resposta);
 });
 
 router.post("/defUnidade", function (requisicao, resposta){

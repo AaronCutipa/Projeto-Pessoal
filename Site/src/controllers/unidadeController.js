@@ -1,11 +1,12 @@
 var unidadeModel = require("../models/unidadeModel");
 
-function listar(req, res) {
-    unidadeModel.listar().then(function (resultado) {
-        res.status(200).json(resultado);
-    }).catch(function (erro) {
-        res.status(500).json(erro.sqlMessage);
-    })
+function graficoCargo(requisicao, resposta) {
+    unidadeModel.graficoCargo()
+        .then(function (resultadoBanco) {
+            resposta.status(200).json(resultadoBanco);
+        }).catch(function (erro) {
+            resposta.status(500).json(erro.sqlMessage);
+        })
 }
 
 function cadastrar(req, res) {
@@ -92,5 +93,6 @@ module.exports = {
     cadastrar,
     defUnidade,
     defCargo,
-    defClasse
+    defClasse,
+    graficoCargo
 }
