@@ -47,7 +47,7 @@ function graficoUnidade() {
 // Kpis
 function maxMembro() {
     var instrucao = `
-    SELECT COUNT(*) AS 'Total de Membros'
+    SELECT COUNT(*) AS 'total_membro'
     FROM membro
     ;`;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -57,7 +57,7 @@ function maxClasse() {
     var instrucao = `
     SELECT
         nomeClasse AS Classe,
-        COUNT(m.idMembro) AS qtd_membro
+        COUNT(m.idMembro) AS 'qtd_membro'
     FROM classes AS cl
     JOIN membro AS m
         ON cl.idClasse = m.fkClasse
@@ -105,7 +105,6 @@ function defClasse(classe, idMembro) {
 
 
 module.exports = {
-    cadastrar,
     defUnidade,
     defCargo,
     defClasse,

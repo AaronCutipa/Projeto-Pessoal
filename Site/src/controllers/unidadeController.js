@@ -123,7 +123,6 @@ function defClasse(requisicao, resposta) {
 
 // Receber informações que vamos enviar na model 
 module.exports = {
-    cadastrar,
     defUnidade,
     defCargo,
     defClasse,

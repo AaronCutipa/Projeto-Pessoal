@@ -56,15 +56,15 @@
                         <div class="bloquinhos">
                             <div class="parteUm">
                                 <span>Quatidade Total de membros</span>
-                                <h1>KPI 1</h1>
+                                <h1 id="h1_kpi1">KPI 1</h1>
                             </div>
                             <div class="parteDois">
                                 <span>Classe com mais membros</span>
-                                <h1>KPI 2</h1>
+                                <h1 id="h1_kpi2">KPI 2</h1>
                             </div>
                             <div class="parteTres">
                                 <span>Unidade com mais membros</span>
-                                <h1>KPI 3</h1>
+                                <h1 id="h1_kpi3">KPI 3</h1>
                             </div>
                         </div>
                     </div>
@@ -122,8 +122,8 @@
 
 
     }
-    function obterdadosClasse() {
 
+    function obterdadosClasse() {
         fetch(`/unidade/graficoClasse`, {
             method: "GET"
         })
@@ -155,7 +155,7 @@
             })
     }
 
-    function obterdadosClasse() {
+    function obterdadosUnidade() {
 
         fetch(`/unidade/graficoUnidade`, {
             method: "GET"
@@ -170,7 +170,7 @@
 
                             for (var i = 0; i < dados.length; i++) {
                                 var unidadeAtual = dados[i].Unidade;
-                                var qtdAtualClasse = dados[i].qtd_membro;
+                                var qtdAtualUnidade = dados[i].qtd_membro;
 
                                 dataPolar.labels.push(unidadeAtual);
                                 dataPolar.datasets[0].data.push(qtdAtualUnidade);
@@ -258,6 +258,7 @@
 
     var ctxBarras = document.getElementById('bar-chart').getContext('2d');
     var grafico_barras = new Chart(ctxBarras, configBarras);
+    obterdadosClasse()
 
     var dataPolar = {
         labels: [],
@@ -272,6 +273,7 @@
             ]
         }]
     };
+    
 
     const config = {
         type: 'polarArea',
@@ -285,6 +287,83 @@
         }
     };
 
+
     var ctxPolarArea = document.getElementById('polarArea-chart').getContext('2d');
     var grafico_polar = new Chart(ctxPolarArea, config);
+    obterdadosUnidade()
+
+
+
+    function kpi1() {
+        fetch(`/unidade/maxMembro`, {
+            method: "GET"
+        })
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json()
+                .then(dados => {
+                    console.log(dados)
+                    h1_kpi1.innerHTML = dados[0].total_membro;
+                })
+                .catch(erro => {
+                alert("Ocorreu um erro ao buscar os dados do banco de dados");
+                console.log(erro);
+            })
+            }
+        })
+        .catch(erro => {
+                alert("Ocorreu um erro ao buscar os dados do banco de dados");
+                console.log(erro);
+            })
+    }
+    kpi1();
+
+    function kpi2() {
+        fetch(`/unidade/maxClasse`, {
+            method: "GET"
+        })
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json()
+                .then(dados => {
+                    console.log(dados)
+                    h1_kpi2.innerHTML = dados[0].qtd_membro;
+                })
+                .catch(erro => {
+                alert("Ocorreu um erro ao buscar os dados do banco de dados");
+                console.log(erro);
+            })
+            }
+        })
+        .catch(erro => {
+                alert("Ocorreu um erro ao buscar os dados do banco de dados");
+                console.log(erro);
+            })
+    }
+    kpi2()
+
+    
+    function kpi3() {
+        fetch(`/unidade/maxUnidade`, {
+            method: "GET"
+        })
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json()
+                .then(dados => {
+                    console.log(dados)
+                    h1_kpi3.innerHTML = dados[0].qtd_membro;
+                })
+                .catch(erro => {
+                alert("Ocorreu um erro ao buscar os dados do banco de dados");
+                console.log(erro);
+            })
+            }
+        })
+        .catch(erro => {
+                alert("Ocorreu um erro ao buscar os dados do banco de dados");
+                console.log(erro);
+            })
+    }
+    kpi3();
 </script>
