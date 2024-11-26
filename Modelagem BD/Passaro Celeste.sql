@@ -132,9 +132,6 @@ LEFT JOIN unidade u ON m.fkUnidade = u.idUnidade
 LEFT JOIN classes cl ON m.fkClasse = cl.idClasse
 ORDER BY m.idMembro ASC;
 
--- Total de membros
-SELECT COUNT(*) AS 'Total de Membros'
-FROM membro;
 
 -- Total de membros por Cargo
 SELECT
@@ -159,6 +156,11 @@ SELECT
 FROM classes cl
 LEFT JOIN membro m ON cl.idClasse = m.fkClasse
 GROUP BY cl.idClasse;
+
+-- Total de membros
+SELECT COUNT(*) AS 'Total de Membros'
+FROM membro;
+
 
 -- Unidade com mais membros
 SELECT

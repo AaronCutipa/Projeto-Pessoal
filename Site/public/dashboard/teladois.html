@@ -17,7 +17,7 @@
             <!-- Barra Lateral -->
             <div class="barraLateral">
                 <div class="sair" onclick="limparSessao()">
-                    <a href>
+                    <a href="../index.html">
                         <img src="../assets/icon/sair.png" alt="Sair">
                     </a>
                 </div>
@@ -59,10 +59,12 @@
                             </div>
                             <div class="parteDois">
                                 <span>Classe com mais membros</span>
+                                <span id="classe_kpi">Classe</span>
                                 <h1 id="h1_kpi2">KPI 2</h1>
                             </div>
                             <div class="parteTres">
                                 <span>Unidade com mais membros</span>
+                                <span id="unidade_kpi">Unidade</span>
                                 <h1 id="h1_kpi3">KPI 3</h1>
                             </div>
                         </div>
@@ -327,6 +329,7 @@
                 .then(dados => {
                     console.log(dados)
                     h1_kpi2.innerHTML = dados[0].qtd_membro;
+                    classe_kpi.innerHTML = dados[0].Classe;
                 })
                 .catch(erro => {
                 alert("Ocorreu um erro ao buscar os dados do banco de dados");
@@ -352,6 +355,7 @@
                 .then(dados => {
                     console.log(dados)
                     h1_kpi3.innerHTML = dados[0].qtd_membro;
+                    unidade_kpi.innerHTML = dados[0].Unidade;
                 })
                 .catch(erro => {
                 alert("Ocorreu um erro ao buscar os dados do banco de dados");
