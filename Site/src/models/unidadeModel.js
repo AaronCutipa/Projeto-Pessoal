@@ -53,6 +53,7 @@ function maxMembro() {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
 function maxClasse() {
     var instrucao = `
     SELECT
