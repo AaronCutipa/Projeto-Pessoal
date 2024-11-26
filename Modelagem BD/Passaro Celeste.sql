@@ -160,15 +160,28 @@ FROM classes cl
 LEFT JOIN membro m ON cl.idClasse = m.fkClasse
 GROUP BY cl.idClasse;
 
--- Total de mebros por Gênero
+-- Unidade com mais membros
 SELECT
-    CASE 
-        WHEN m.sexo = 0 THEN 'Masculino'
-        WHEN m.sexo = 1 THEN 'Feminino'
-    END AS Genero,
-    COUNT(*) AS 'Quantidade de Membros'
-FROM membro m
-GROUP BY m.sexo;
+	u.nomeUnidade AS Unidade,
+    COUNT(m.idMembro) AS 'qtd_membro'
+FROM unidade AS u
+JOIN membro AS m
+	ON u.idUnidade = m.fkUnidade
+GROUP BY u.idUnidade
+ORDER BY COUNT(m.idMembro) DESC
+LIMIT 1;
+
+-- Classe com mais membros
+SELECT
+	nomeClasse AS Classe,
+    COUNT(m.idMembro) AS qtd_membro
+FROM classes AS cl
+JOIN membro AS m
+	ON cl.idClasse = m.fkClasse
+GROUP BY cl.idClasse
+ORDER BY COUNT(m.idMembro) DESC
+LIMIT 1;
+
 
 SELECT * FROM membro;
 
