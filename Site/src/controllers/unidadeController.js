@@ -1,5 +1,6 @@
 var unidadeModel = require("../models/unidadeModel");
 
+// Gráficos
 function graficoCargo(requisicao, resposta) {
     unidadeModel.graficoCargo()
         .then(function (resultadoBanco) {
@@ -9,20 +10,53 @@ function graficoCargo(requisicao, resposta) {
         })
 }
 
-function cadastrar(req, res) {
-    var nome = req.body.nome;
-
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    }
-
-    carroModel.cadastrar(nome).then(function (resposta) {
-        res.status(200).send("Nome criado com sucesso");
-    }).catch(function (erro) {
-        res.status(500).json(erro.sqlMessage);
-    })
+function graficoClasse(requisicao, resposta) {
+    unidadeModel.graficoClasse()
+        .then(function (resultadoBanco) {
+            resposta.status(200).json(resultadoBanco);
+        }).catch(function (erro) {
+            resposta.status(500).jason(erro.sqlMessege)
+        })
 }
 
+function graficoUnidade(requisicao, resposta) {
+    unidadeModel.graficoUnidade()
+        .then(function (resultadoBanco) {
+            resposta.status(200).json(resultadoBanco);
+        }).catch(function (erro) {
+            resposta.status(500).jason(erro.sqlMessege)
+        })
+}
+
+// Kpis
+function maxMembro(requisicao, resposta) {
+    unidadeModel.maxMembro()
+        .then(function (resultadoBanco) {
+            resposta.status(200).json(resultadoBanco);
+        }).catch(function (erro) {
+            resposta.status(500).json(erro.sqlMessage);
+        })
+}
+
+function maxClasse(requisicao, resposta) {
+    unidadeModel.maxClasse()
+        .then(function (resultadoBanco) {
+            resposta.status(200).json(resultadoBanco);
+        }).catch(function (erro) {
+            resposta.status(500).jason(erro.sqlMessege)
+        })
+}
+
+function maxUnidade(requisicao, resposta) {
+    unidadeModel.maxUnidade()
+        .then(function (resultadoBanco) {
+            resposta.status(200).json(resultadoBanco);
+        }).catch(function (erro) {
+            resposta.status(500).jason(erro.sqlMessege)
+        })
+}
+
+// Formulário
 function defUnidade(requisicao, resposta) {
     //  Ele recebe os dados do HTML
     // O idMembro e para confirmar o usuario
@@ -89,10 +123,14 @@ function defClasse(requisicao, resposta) {
 
 // Receber informações que vamos enviar na model 
 module.exports = {
-    listar,
     cadastrar,
     defUnidade,
     defCargo,
     defClasse,
-    graficoCargo
+    graficoCargo,
+    graficoClasse,
+    graficoUnidade,
+    maxMembro,
+    maxClasse,
+    maxUnidade
 }

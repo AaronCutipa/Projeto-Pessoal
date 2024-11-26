@@ -242,11 +242,11 @@ html, body {
                             transition: all 1s ease;
 
                             &:hover {
-                                transform: scale(1.07);
+                                transform: scale(1.02);
                             }
 
                             span {
-                                font-size: 20px;
+                                font-size: 15px;
                                 background: linear-gradient(to right, #ff0015, #000dff);
                                 background-clip: text;
                                 color: transparent;
@@ -280,18 +280,13 @@ html, body {
                         transition: all 1s ease;
 
                         &:hover {
-                            transform: scale(1.07);
+                            transform: scale(1.02);
                         }
                     }
                 }
 
-                #grafico-pizza {
+                #grafico-pizza, #grafico-barras, #grafico-Polar {
                     width: 300px;
-                    height: 300px;
-                }
-
-                #grafico-barras {
-                    width: 500px;
                     height: 300px;
                 }
             }

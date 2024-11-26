@@ -55,15 +55,15 @@
                         <h1>DASHBOARD</h1>
                         <div class="bloquinhos">
                             <div class="parteUm">
-                                <span>Descrição</span>
+                                <span>Quatidade Total de membros</span>
                                 <h1>KPI 1</h1>
                             </div>
                             <div class="parteDois">
-                                <span>Descrição</span>
+                                <span>Classe com mais membros</span>
                                 <h1>KPI 2</h1>
                             </div>
                             <div class="parteTres">
-                                <span>Descrição</span>
+                                <span>Unidade com mais membros</span>
                                 <h1>KPI 3</h1>
                             </div>
                         </div>
@@ -74,6 +74,9 @@
                         </div>
                         <div class="grafico-container" id="grafico-barras">
                             <canvas id="bar-chart"></canvas>
+                        </div>
+                        <div class="grafico-container" id="grafico-Polar">
+                            <canvas id="polarArea-chart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -86,20 +89,112 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
     function obterdados() {
-        
+        fetch(`/unidade/graficoCargo`, {
+            method: "GET"
+        })
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json()
+                        .then(dados => {
+                            console.log(dados)
+                            dataPizza.datasets[0].data = [];
+                            dataPizza.labels = [];
 
+                            for (var i = 0; i < dados.length; i++) {
+                                var cargoAtual = dados[i].Cargo;
+                                var qtdAtual = dados[i].qtd_membro;
+
+                                dataPizza.labels.push(cargoAtual);
+                                dataPizza.datasets[0].data.push(qtdAtual);
+                                grafico_pizza.update()
+                            }
+                        })
+                        .catch(erro => {
+                            console.log(erro);
+                        })
+                }
+            })
+            .catch(erro => {
+                alert("Ocorreu um erro ao buscar os dados do banco de dados");
+                console.log(erro);
+            })
 
 
     }
+    function obterdadosClasse() {
+
+        fetch(`/unidade/graficoClasse`, {
+            method: "GET"
+        })
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json()
+                        .then(dados => {
+                            console.log(dados)
+                            dataBarras.datasets[0].data = [];
+                            dataBarras.labels = [];
+
+                            for (var i = 0; i < dados.length; i++) {
+                                var classeAtual = dados[i].Classe;
+                                var qtdAtualClasse = dados[i].qtd_membro;
+
+                                dataBarras.labels.push(classeAtual);
+                                dataBarras.datasets[0].data.push(qtdAtualClasse);
+                                grafico_barras.update()
+                            }
+                        })
+                        .catch(erro => {
+                            console.log(erro);
+                        })
+                }
+            })
+            .catch(erro => {
+                alert("Ocorreu um erro ao buscar os dados do banco de dados");
+                console.log(erro);
+            })
+    }
+
+    function obterdadosClasse() {
+
+        fetch(`/unidade/graficoUnidade`, {
+            method: "GET"
+        })
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json()
+                        .then(dados => {
+                            console.log(dados)
+                            dataPolar.datasets[0].data = [];
+                            dataPolar.labels = [];
+
+                            for (var i = 0; i < dados.length; i++) {
+                                var unidadeAtual = dados[i].Unidade;
+                                var qtdAtualClasse = dados[i].qtd_membro;
+
+                                dataPolar.labels.push(unidadeAtual);
+                                dataPolar.datasets[0].data.push(qtdAtualUnidade);
+                                grafico_polar.update()
+                            }
+                        })
+                        .catch(erro => {
+                            console.log(erro);
+                        })
+                }
+            })
+            .catch(erro => {
+                alert("Ocorreu um erro ao buscar os dados do banco de dados");
+                console.log(erro);
+            })
+    }
+
 
     // Cores: Vermelho: #FF6384; Roxo: #9966FF; Azul: #36A2EB; Laranja: #FF9F40; Verde: #4BC0C0; Amarelo: #FFCD56; Cinza: #C9CBCF
-    const dataPizza = {
-        labels: ['Desbravadores', 'Instrutores', 'Conselheiros', 'Capelão', 'Diretores Associados', 'Diretor'],
+    var dataPizza = {
+        labels: [],
         datasets: [{
             label: 'Membros',
-            data: [16, 4, 8, 1, 2, 1],
+            data: [],
             backgroundColor: [
                 '#FF6384',
                 '#36A2EB',
@@ -118,14 +213,16 @@
         data: dataPizza,
     };
 
-    const ctxPizza = document.getElementById('pie-chart').getContext('2d');
-    new Chart(ctxPizza, configPizza);
+    var ctxPizza = document.getElementById('pie-chart').getContext('2d');
+    var grafico_pizza = new Chart(ctxPizza, configPizza);
 
-    const dataBarras = {
-        labels: ['Amigo', 'Companheiro', 'Pesquisador', 'Pioneiro', 'Excursionista', 'Guia'],
+
+    obterdados()
+    var dataBarras = {
+        labels: [],
         datasets: [{
             label: 'Membros fazendo',
-            data: [9, 5, 7, 3, 5, 2],
+            data: [],
             backgroundColor: [
                 // Cores: Vermelho: #FF6384; Roxo: #9966FF; Azul: #36A2EB; Laranja: #FF9F40; Verde: #4BC0C0; Amarelo: #FFCD56; Cinza: #C9CBCF
                 '#FF6384',
@@ -133,8 +230,7 @@
                 '#4BC0C0',
                 '#C9CBCF',
                 '#9966FF',
-                '#FFCD56',
-                '#FF9F40'
+                '#FFCD56'
             ],
             borderColor: [
                 '#FF6384',
@@ -142,8 +238,7 @@
                 '#4BC0C0',
                 '#C9CBCF',
                 '#9966FF',
-                '#FFCD56',
-                '#FF9F40'
+                '#FFCD56'
             ],
             borderWidth: 1
         }]
@@ -161,6 +256,35 @@
         }
     };
 
-    const ctxBarras = document.getElementById('bar-chart').getContext('2d');
-    new Chart(ctxBarras, configBarras);
+    var ctxBarras = document.getElementById('bar-chart').getContext('2d');
+    var grafico_barras = new Chart(ctxBarras, configBarras);
+
+    var dataPolar = {
+        labels: [],
+        datasets: [{
+            label: 'Membros',
+            data: [11, 16, 7, 3],
+            backgroundColor: [
+                '#FF6384',
+                '#36A2EB',
+                '#4BC0C0',
+                '#C9CBCF'
+            ]
+        }]
+    };
+
+    const config = {
+        type: 'polarArea',
+        data: dataPolar,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+
+    var ctxPolarArea = document.getElementById('polarArea-chart').getContext('2d');
+    var grafico_polar = new Chart(ctxPolarArea, config);
 </script>
